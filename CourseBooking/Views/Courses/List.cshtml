@@ -5,7 +5,6 @@
     {
         columns.Bound(p => p.Name);
         columns.Bound(p => p.StartDateTime).Format("{0:dd.MM.yyyy hh:mmdd.MM.yyyy hh:mm}").Width(100);
-        columns.Bound(p => p.EndDateTime).Format("{0:dd.MM.yyyy hh:mmdd.MM.yyyy hh:mm}").Width(100);
     })
     .Pageable()
     .Sortable()

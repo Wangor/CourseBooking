@@ -12,7 +12,6 @@
     {
         columns.Bound(p => p.Name);
         columns.Bound(p => p.StartDateTime).Format("{0:dd.MM.yyyy hh:mm}").Width(100);
-        columns.Bound(p => p.EndDateTime).Format("{0:dd.MM.yyyy hh:mm}").Width(100);
         columns.Command(command => { command.Edit(); command.Destroy(); }).Width(160);
     })
     .ToolBar(toolbar => toolbar.Create())
