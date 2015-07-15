@@ -1,0 +1,27 @@
+﻿@model CourseBooking.Models.CourseSetEntry
+<div class="editor">
+    <h3>Kurs Template</h3>
+    @Html.HiddenFor(model => model.Id)
+
+    <div>
+        @Html.LabelFor(model => model.CourseTemplate.Id)
+    </div>
+    <div>
+        @Html.EditorFor(model => model.CourseTemplate.Id)
+        @Html.ValidationMessageFor(model => model.CourseTemplate.Id)
+    </div>
+    <div>
+        @(Html.Kendo().DropDownListFor(m=>m.CourseTemplate).Name("CourseTemplate").DataTextField("Name").DataValueField("Id").HtmlAttributes(new { style = "width: 250px" }).DataSource(source =>
+                  {
+                      source.Read(read =>
+                          {
+                              read.Action("GetCourseTemplatesDL", "CourseTemplates");
+                          });
+                  }))
+    </div>
+</div>
+
+
+
+
+

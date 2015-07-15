@@ -1,0 +1,40 @@
+﻿@model CourseBooking.Models.CourseTemplate
+<div class="editor">
+    <h3>Kurs Template</h3>
+    @Html.HiddenFor(model => model.Id)
+
+    <div>
+        @Html.LabelFor(model => model.Name)
+    </div>
+    <div>
+        @Html.EditorFor(model => model.Name)
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.MaxParticipants)
+    </div>
+    <div>
+        @Html.EditorFor(model => model.MaxParticipants)
+        @Html.ValidationMessageFor(model => model.MaxParticipants)
+    </div>
+    <div>
+        @(Html.Kendo().DropDownListFor(m => m.LocationId).Name("LocationId").DataTextField("Name").DataValueField("Id").HtmlAttributes(new {style = "width: 250px"}).DataSource(source =>
+          {
+              source.Read(read =>
+              { read.Action("GetLocationsDL", "Locations"); });
+          }))
+        @Html.ValidationMessageFor(model => model.LocationId)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Price)
+    </div>
+    <div>
+        @Html.EditorFor(model => model.Price)
+        @Html.ValidationMessageFor(model => model.Price)
+    </div>
+</div>
+
+
+
+
+

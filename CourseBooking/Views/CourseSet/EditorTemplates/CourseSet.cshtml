@@ -1,0 +1,33 @@
+﻿@model CourseBooking.Models.CourseSet
+<div class="editor">
+    <h3>Kurs Template</h3>
+    @Html.HiddenFor(model => model.Id)
+
+    <div>
+        @Html.LabelFor(model => model.Name)
+    </div>
+    <div>
+        @Html.EditorFor(model => model.Name)
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Description)
+    </div>
+    <div>
+        @Html.EditorFor(model => model.Description)
+        @Html.ValidationMessageFor(model => model.Description)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Price)
+    </div>
+    <div>
+        @Html.EditorFor(model => model.Price)
+        @Html.ValidationMessageFor(model => model.Price)
+    </div>
+   
+</div>
+
+
+
+
+

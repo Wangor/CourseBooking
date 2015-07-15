@@ -1,0 +1,20 @@
+﻿@using CourseBooking.Models
+@(Html.Kendo().Grid<Course>()
+    .Name("grid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.Name);
+        columns.Bound(p => p.StartDateTime).Format("{0:dd.MM.yyyy hh:mmdd.MM.yyyy hh:mm}").Width(100);
+        columns.Bound(p => p.EndDateTime).Format("{0:dd.MM.yyyy hh:mmdd.MM.yyyy hh:mm}").Width(100);
+    })
+    .Pageable()
+    .Sortable()
+    .Scrollable()
+    .HtmlAttributes(new { style = "height:430px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(20)
+        .Model(model => model.Id(p => p.Id))        
+        .Read(read => read.Action("GetCourses", "Courses", new { templateId = 1 }))
+    )
+)

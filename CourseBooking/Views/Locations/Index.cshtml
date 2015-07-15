@@ -1,0 +1,50 @@
+﻿@using CourseBooking.Models
+@{
+    ViewBag.Title = "Orte";
+}
+
+<h2>Orte</h2>
+
+@(Html.Kendo().Grid<Location>()
+    .Name("grid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.Name).Width(150);
+        columns.Bound(p => p.Street).Width(100);
+        columns.Bound(p => p.Zip).Width(100);
+        columns.Bound(p => p.City).Width(100);
+        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(200);
+    })
+    .ToolBar(toolbar => toolbar.Create())
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("Location"))
+    .Pageable()
+    .Sortable()
+    .Scrollable()
+    .HtmlAttributes(new { style = "height:430px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(20)
+        .Events(events => events.Error("error_handler"))
+        .Model(model => model.Id(p => p.Id))
+            .Create(update => update.Action("Location_Create", "Locations"))
+                        .Read(read => read.Action("GetLocations", "Locations"))
+                    .Update(update => update.Action("Location_Update", "Locations"))
+                        .Destroy(update => update.Action("Location_Destroy", "Locations"))
+    )
+)
+<script type="text/javascript">
+    function error_handler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function () {
+                        message += this + "\n";
+                    });
+                }
+            });
+            alert(message);
+        }
+    }
+</script>
+

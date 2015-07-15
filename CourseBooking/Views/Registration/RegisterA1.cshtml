@@ -1,0 +1,86 @@
+﻿@model CourseBooking.Controllers.RegisterA1ViewModel
+
+<div class="editor">
+    <h3>Anmeldung</h3>
+
+    <div>
+        @Html.LabelFor(model => model.Registration.Name)
+    </div>
+    <div>
+        @Html.EditorFor(model => model.Registration.Name)
+        @Html.ValidationMessageFor(model => model.Registration.Name)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Registration.PreName)
+    </div>
+    <div>
+        @Html.EditorFor(model => model.Registration.PreName)
+        @Html.ValidationMessageFor(model => model.Registration.PreName)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Registration.AddressLine)
+    </div>
+    <div>
+        @Html.EditorFor(model => model.Registration.AddressLine)
+        @Html.ValidationMessageFor(model => model.Registration.AddressLine)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Registration.AddressLine2)
+    </div>
+    <div>
+        @Html.EditorFor(model => model.Registration.AddressLine2)
+        @Html.ValidationMessageFor(model => model.Registration.AddressLine2)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Registration.EMail)
+    </div>
+    <div>
+        @Html.EditorFor(model => model.Registration.EMail)
+        @Html.ValidationMessageFor(model => model.Registration.EMail)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Registration.Phone)
+    </div>
+    <div>
+        @Html.EditorFor(model => model.Registration.Phone)
+        @Html.ValidationMessageFor(model => model.Registration.Phone)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Course1)
+    </div>
+    <div>
+        @(Html.Kendo().DropDownListFor(m => m.Course1).Name("Course1").DataTextField("DisplayName").DataValueField("Id").HtmlAttributes(new { style = "width: 400px" }).DataSource(source =>
+              {
+                  source.Read(read =>
+                      {
+                          read.Action("GetCourseDL", "Courses", new { templateId = 2 });
+                      });
+              }))
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Course2)
+    </div>
+    <div>
+        @(Html.Kendo().DropDownList().Name("Course2").DataTextField("DisplayName").DataValueField("Id").HtmlAttributes(new { style = "width: 400px" }).DataSource(source =>
+              {
+                  source.Read(read =>
+                      {
+                          read.Action("GetCourseDL", "Courses", new { templateId = 3 }).Data("filter");
+                      });
+              })
+              .CascadeFrom("Course1"))
+    </div>
+</div>
+
+<script>
+
+
+
+    function filter() {
+                return
+                {
+                    id: $("Course1").val();
+                };
+            }
+
+</script>

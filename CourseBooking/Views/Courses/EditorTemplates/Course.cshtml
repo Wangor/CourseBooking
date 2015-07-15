@@ -1,0 +1,90 @@
+﻿@model CourseBooking.Models.Course
+<script>
+    function applyTemplate(e) {
+        var templateId = $("#CourseTemplateId").data("kendoDropDownList").dataItem().Id;
+        var url = '@Url.Action("GetCourseTemplate", "CourseTemplates")/' + templateId;
+        $.getJSON(url, function (result) {
+            console.log(result);
+            $("#Name").val(result.Name).change();
+            $("#Remark").val(result.Remark).change();
+            $("#MaxParticipants").val(result.MaxParticipants).change();
+            var dropdownlist = $("#LocationId").data("kendoDropDownList");
+            console.log("---");
+            console.log(dropdownlist);
+            console.log(result.LocationId);
+            dropdownlist.select(function (dataItem) {
+                return dataItem.Id === result.LocationId;
+            });
+            $("#LocationId").val(result.LocationId).change();
+        })
+    }
+</script>
+<div class="editor">
+    <h3>Kurs</h3>
+    @Html.HiddenFor(model => model.Id)   
+    <div>
+        <div>
+            @(Html.Kendo().DropDownListFor(m => m.CourseTemplateId).Name("CourseTemplateId").DataTextField("Name").DataValueField("Id").HtmlAttributes(new { style = "width: 250px" }).DataSource(source =>
+                  {
+                      source.Read(read =>
+                          {
+                              read.Action("GetCourseTemplatesDL", "CourseTemplates");
+                          });
+                  }))
+            @Html.Kendo().Button().Name("applyButton").Content("Anwenden").Events(e=>e.Click("applyTemplate"))
+        </div>
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.Name)
+    </div>
+    <div>
+        @Html.EditorFor(model => model.Name)
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Remark)
+    </div>
+    <div>
+        @Html.EditorFor(model => model.Remark)
+        @Html.ValidationMessageFor(model => model.Remark)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.StartDateTime)
+    </div>
+    <div>
+        @Html.Kendo().DateTimePickerFor(model => model.StartDateTime)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.MaxParticipants)
+    </div>
+    <div>
+        @Html.EditorFor(model => model.MaxParticipants)
+        @Html.ValidationMessageFor(model => model.MaxParticipants)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Price)
+    </div>
+    <div>
+        @Html.EditorFor(model => model.Price)
+        @Html.ValidationMessageFor(model => model.Price)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.LocationId)
+    </div>
+    <div>
+        @(Html.Kendo().DropDownListFor(m => m.LocationId).Name("LocationId").DataTextField("Name").DataValueField("Id").HtmlAttributes(new { style = "width: 250px" }).DataSource(source =>
+              {
+                  source.Read(read =>
+                      { read.Action("GetLocationsDL", "Locations"); });
+              }))
+        @Html.ValidationMessageFor(model => model.LocationId)
+    </div>
+</div>
+
+
+
+
+
+
+

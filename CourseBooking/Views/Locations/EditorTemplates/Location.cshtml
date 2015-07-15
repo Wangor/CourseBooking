@@ -1,0 +1,39 @@
+﻿@model CourseBooking.Models.Location
+<div class="editor">
+    <h3>Ort</h3>
+    @Html.HiddenFor(model => model.Id)
+
+    <div>
+        @Html.LabelFor(model => model.Name)
+    </div>
+    <div>
+        @Html.EditorFor(model => model.Name)
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Street)
+    </div>
+    <div>
+        @Html.EditorFor(model => model.Street)
+        @Html.ValidationMessageFor(model => model.Street)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Zip)
+    </div>
+    <div>
+        @Html.EditorFor(model => model.Zip)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.City)
+    </div>
+    <div>
+        @Html.EditorFor(model => model.City)
+        @Html.ValidationMessageFor(model => model.City)
+    </div>
+</div>
+
+
+
+
+
+
