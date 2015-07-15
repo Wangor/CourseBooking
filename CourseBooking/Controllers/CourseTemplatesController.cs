@@ -42,36 +42,36 @@ namespace CourseBooking.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult CourseTemplate_Create([DataSourceRequest] DataSourceRequest dsRequest, CourseTemplate location)
+        public ActionResult CourseTemplate_Create([DataSourceRequest] DataSourceRequest dsRequest, CourseTemplate courseTemplate)
         {
-            if (location != null && ModelState.IsValid)
+          if (courseTemplate != null && ModelState.IsValid)
             {
-                context.CourseTemplates.Add(location);
+              context.CourseTemplates.Add(courseTemplate);
                 context.SaveChanges();
             }
-            return Json(ModelState.ToDataSourceResult());
+            return Json(new[] { courseTemplate }.ToDataSourceResult(dsRequest, ModelState));
         }
 
-        public ActionResult CourseTemplate_Update([DataSourceRequest] DataSourceRequest dsRequest, CourseTemplate location)
+        public ActionResult CourseTemplate_Update([DataSourceRequest] DataSourceRequest dsRequest, CourseTemplate courseTemplate)
         {
-            if (location != null && ModelState.IsValid)
+          if (courseTemplate != null && ModelState.IsValid)
             {
-                var toUpdate = context.CourseTemplates.FirstOrDefault(p => p.Id == location.Id);
+              var toUpdate = context.CourseTemplates.FirstOrDefault(p => p.Id == courseTemplate.Id);
                 TryUpdateModel(toUpdate);
                 context.SaveChanges();
             }
-            return Json(ModelState.ToDataSourceResult());
+            return Json(new[] { courseTemplate }.ToDataSourceResult(dsRequest, ModelState));
         }
 
-        public ActionResult DeleteCourseTemplate([DataSourceRequest] DataSourceRequest dsRequest, Course course)
+        public ActionResult DeleteCourseTemplate([DataSourceRequest] DataSourceRequest dsRequest, CourseTemplate courseTemplate)
         {
-            if (course != null && ModelState.IsValid)
+          if (courseTemplate != null && ModelState.IsValid)
             {
-                this.context.CourseTemplates.Remove(this.context.CourseTemplates.SingleOrDefault(c=>c.Id == course.Id));
+              this.context.CourseTemplates.Remove(this.context.CourseTemplates.SingleOrDefault(c => c.Id == courseTemplate.Id));
                 this.context.SaveChanges();
             }
 
-            return this.Json(ModelState.ToDataSourceResult());
+            return Json(new[] { courseTemplate }.ToDataSourceResult(dsRequest, ModelState));
         }
     }
 }

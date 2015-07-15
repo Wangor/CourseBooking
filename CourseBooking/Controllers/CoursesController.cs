@@ -71,7 +71,17 @@ namespace CourseBooking.Controllers
 
         public ActionResult GetCourseDL(int templateId, int previous = 0)
         {
-          var result = context.Courses.Where(c => c.CourseTemplateId == templateId).ToList();
+          var result = new List<Course>();
+          if (previous == 0)
+          {
+            result = context.Courses.Where(c => c.CourseTemplateId == templateId).ToList();
+          }
+          else
+          {
+            var course = context.Courses.FirstOrDefault(c => c.Id == previous);
+            result = context.Courses.Where(c => c.CourseTemplateId == templateId && c.StartDateTime > course.StartDateTime).ToList();
+          }
+
           var listItems = new List<CourseListViewModel>();
           foreach (var item in result)
           {
@@ -90,7 +100,7 @@ namespace CourseBooking.Controllers
                 this.context.SaveChanges();
             }
 
-            return this.Json(ModelState.ToDataSourceResult());
+            return Json(new[] { course }.ToDataSourceResult(dsRequest, ModelState));
         }
 
         public ActionResult DeleteCourse([DataSourceRequest] DataSourceRequest dsRequest, Course course)
@@ -98,7 +108,7 @@ namespace CourseBooking.Controllers
             this.context.Courses.Remove(this.context.Courses.SingleOrDefault(c=>c.Id == course.Id));
             this.context.SaveChanges();
 
-            return this.Json(ModelState.ToDataSourceResult());
+            return Json(new[] { course }.ToDataSourceResult(dsRequest, ModelState));
         }
 
         public ActionResult Course_Update([DataSourceRequest] DataSourceRequest dsRequest, Course course)
@@ -110,7 +120,7 @@ namespace CourseBooking.Controllers
                 this.TryUpdateModel(toUpdate);
                 this.context.SaveChanges();
             }
-            return this.Json(ModelState.ToDataSourceResult());
+          return Json(new[] { course }.ToDataSourceResult(dsRequest, ModelState));
         }
     }
 

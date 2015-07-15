@@ -66,21 +66,20 @@
                   source.Read(read =>
                       {
                           read.Action("GetCourseDL", "Courses", new { templateId = 3 }).Data("filter");
-                      });
+                      }).ServerFiltering(true);
               })
-              .CascadeFrom("Course1"))
+                      .Enable(false)
+                      .AutoBind(false)
+              .CascadeFrom("Course1")
+              )
+        <script>
+            function filter() {
+                return {
+                    previous: $("#Course1").val()
+                };
+            }
+        </script>
+
     </div>
 </div>
 
-<script>
-
-
-
-    function filter() {
-                return
-                {
-                    id: $("Course1").val();
-                };
-            }
-
-</script>
