@@ -1302,7 +1302,6 @@
     <Content Include="Views\Locations\EditorTemplates\Location.cshtml" />
     <Content Include="Views\CourseTemplates\Index.cshtml" />
     <Content Include="Views\CourseSet\Index.cshtml" />
-    <Content Include="Views\CourseSet\Edit.cshtml" />
     <Content Include="Views\Courses\List.cshtml" />
     <Content Include="Views\CourseSet\EditorTemplates\CourseSet.cshtml" />
     <Content Include="Views\CourseSet\EditorTemplates\CourseSetEntry.cshtml" />
