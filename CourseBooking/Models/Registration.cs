@@ -123,7 +123,6 @@ namespace CourseBooking.Models
     /// <summary>
     ///   Gets or sets the LfaEndDateTime.
     /// </summary>
-    [Required]
     [Display(Name = "LFA-Ablauf")]
     public DateTime? LfaEndDateTime { get; set; }
 

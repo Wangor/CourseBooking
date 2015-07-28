@@ -1,6 +1,17 @@
 ﻿@using CourseBooking.Models
 @using CourseBooking.ViewModels
 
+@*<script>
+    kendo.ui.validator.rules.mvcdate = function (input) {
+        //use the custom date format here
+        //kendo.parseDate - http://docs.telerik.com/kendo-ui/api/javascript/kendo#methods-parseDate
+        if (!input.attr("data-val-date")) {
+            return true;
+        }
+        return input.val() === "" || kendo.parseDate(input.val(), "dd.MM.yyyy") !== null;
+    }
+</script>*@
+
 @{
     ViewBag.Title = "Index";
 }
@@ -28,7 +39,7 @@
     .DataSource(dataSource => dataSource
         .Ajax()
         .PageSize(20)
-        .Events(events => events.Error("error_handler"))
+        //.Events(events => events.Error("error_handler"))
         .Model(model => model.Id(p => p.Id))
             .Create(update => update.Action("Course_Create", "Courses"))
                 .Read(read => read.Action("GetCourses", "Courses"))
@@ -53,7 +64,7 @@
                 .Read(read => read.Action("GetCourseRegistrations", "Courses", new { courseId = "#=Id#" }))
             ).ToClientTemplate())
 </script>
-<script type="text/javascript">
+@*<script type="text/javascript">
     function error_handler(e) {
         if (e.errors) {
             var message = "Errors:\n";
@@ -67,5 +78,5 @@
             alert(message);
         }
     }
-</script>
+</script>*@
 

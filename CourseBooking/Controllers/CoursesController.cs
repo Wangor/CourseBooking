@@ -9,6 +9,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Threading;
 using CourseBooking.Models;
 
 namespace CourseBooking.Controllers
@@ -25,6 +27,7 @@ namespace CourseBooking.Controllers
     /// <summary>
     /// The courses controller.
     /// </summary>
+    [Authorize]
     public class CoursesController : Controller
     {
         /// <summary>
@@ -38,6 +41,17 @@ namespace CourseBooking.Controllers
         public CoursesController()
         {
             this.context = new CourseContext();
+        }
+
+        protected override void Initialize(System.Web.Routing.RequestContext requestContext)
+        {
+            base.Initialize(requestContext);
+
+            const string culture = "de-CH";
+            CultureInfo ci = CultureInfo.GetCultureInfo(culture);
+
+            Thread.CurrentThread.CurrentCulture = ci;
+            Thread.CurrentThread.CurrentUICulture = ci;
         }
 
         /// <summary>

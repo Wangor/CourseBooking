@@ -1,4 +1,9 @@
-﻿namespace CourseBooking
+﻿using System.Data.Entity.Migrations;
+using CourseBooking.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+
+namespace CourseBooking
 {
     using System.Web.Mvc;
     using System.Web.Optimization;
@@ -14,6 +19,7 @@
 
         protected void Application_Start()
         {
+            DataAnnotationsModelValidatorProvider.AddImplicitRequiredAttributeForValueTypes = false;
             AreaRegistration.RegisterAllAreas();
             BootstrapContainer();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

@@ -42,13 +42,21 @@ namespace CourseBooking.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Title = c.String(),
-                        Name = c.String(),
-                        PreName = c.String(),
-                        AddressLine = c.String(),
+                        AddressLine = c.String(nullable: false),
                         AddressLine2 = c.String(),
-                        Phone = c.String(),
-                        EMail = c.String(),
+                        City = c.String(nullable: false),
+                        Confirmed = c.Boolean(nullable: false),
+                        CourseType = c.String(),
+                        EMail = c.String(nullable: false),
+                        Name = c.String(nullable: false),
+                        Phone = c.String(nullable: false),
+                        PreName = c.String(nullable: false),
+                        Title = c.String(),
+                        Zip = c.String(nullable: false),
+                        Birthdate = c.DateTime(nullable: false),
+                        LfaEndDateTime = c.DateTime(nullable: false),
+                        RegRefNr = c.String(),
+                        Remark = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -96,13 +104,16 @@ namespace CourseBooking.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Title = c.String(),
-                        Name = c.String(),
-                        PreName = c.String(),
                         AddressLine = c.String(),
                         AddressLine2 = c.String(),
-                        Phone = c.String(),
+                        City = c.String(),
                         EMail = c.String(),
+                        Name = c.String(),
+                        Phone = c.String(),
+                        PreName = c.String(),
+                        Title = c.String(),
+                        Birtdate = c.DateTime(),
+                        Zip = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -131,22 +142,40 @@ namespace CourseBooking.Migrations
                 .Index(t => t.RegistrationId)
                 .Index(t => t.Course_Id);
             
+            CreateTable(
+                "dbo.CustomerRegistrations",
+                c => new
+                    {
+                        CustomerId = c.Int(nullable: false),
+                        RegistrationId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.CustomerId, t.RegistrationId })
+                .ForeignKey("dbo.Customers", t => t.CustomerId, cascadeDelete: true)
+                .ForeignKey("dbo.Registrations", t => t.RegistrationId, cascadeDelete: true)
+                .Index(t => t.CustomerId)
+                .Index(t => t.RegistrationId);
+            
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.CustomerRegistrations", "RegistrationId", "dbo.Registrations");
+            DropForeignKey("dbo.CustomerRegistrations", "CustomerId", "dbo.Customers");
             DropForeignKey("dbo.CourseSetEntry", "CourseTemplate_Id", "dbo.CourseTemplate");
             DropForeignKey("dbo.CourseSetEntry", "CourseSetId", "dbo.CourseSet");
             DropForeignKey("dbo.CourseRegistrations1", "Registration_Id", "dbo.Registrations");
+            DropForeignKey("dbo.CourseRegistrations1", "Course_Id", "dbo.Course");
             DropForeignKey("dbo.CourseRegistrations", "Course_Id", "dbo.Course");
             DropForeignKey("dbo.CourseRegistrations", "RegistrationId", "dbo.Registrations");
-            DropForeignKey("dbo.CourseRegistrations1", "Course_Id", "dbo.Course");
+            DropIndex("dbo.CustomerRegistrations", new[] { "RegistrationId" });
+            DropIndex("dbo.CustomerRegistrations", new[] { "CustomerId" });
             DropIndex("dbo.CourseSetEntry", new[] { "CourseTemplate_Id" });
             DropIndex("dbo.CourseSetEntry", new[] { "CourseSetId" });
             DropIndex("dbo.CourseRegistrations1", new[] { "Registration_Id" });
+            DropIndex("dbo.CourseRegistrations1", new[] { "Course_Id" });
             DropIndex("dbo.CourseRegistrations", new[] { "Course_Id" });
             DropIndex("dbo.CourseRegistrations", new[] { "RegistrationId" });
-            DropIndex("dbo.CourseRegistrations1", new[] { "Course_Id" });
+            DropTable("dbo.CustomerRegistrations");
             DropTable("dbo.CourseRegistrations");
             DropTable("dbo.Location");
             DropTable("dbo.Customers");

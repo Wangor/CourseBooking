@@ -7,13 +7,13 @@ namespace CourseBooking.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.0.0-20911")]
-    public sealed partial class init11 : IMigrationMetadata
+    public sealed partial class init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(init11));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(init));
         
         string IMigrationMetadata.Id
         {
-            get { return "201507212152274_init11"; }
+            get { return "201507280800422_init"; }
         }
         
         string IMigrationMetadata.Source

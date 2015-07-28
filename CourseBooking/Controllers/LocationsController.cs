@@ -9,7 +9,7 @@ namespace CourseBooking.Controllers
 {
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
-
+    [Authorize]
     public class LocationsController : Controller
     {
         private CourseContext context;

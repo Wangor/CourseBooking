@@ -1,1 +1,124 @@
-﻿
+﻿@model CourseBooking.Controllers.RegisterA1ViewModel
+@using (Html.BeginForm(new { @class = "form-horizontal" }))
+{
+    <div class="editor">
+        <h3>Anmeldung Motorradgrundkurs A (mit bestehendem Ausweis A1)</h3>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Registration.Name, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-10">
+                @Html.EditorFor(model => model.Registration.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Registration.Name)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Registration.PreName, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-10">
+                @Html.EditorFor(model => model.Registration.PreName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Registration.PreName)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Registration.AddressLine, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-10">
+                @Html.EditorFor(model => model.Registration.AddressLine, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Registration.AddressLine)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Registration.AddressLine2, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-10">
+                @Html.EditorFor(model => model.Registration.AddressLine2, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Registration.AddressLine2)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Registration.Zip, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-10">
+                @Html.EditorFor(model => model.Registration.Zip, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Registration.Zip)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Registration.City, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-10">
+                @Html.EditorFor(model => model.Registration.City, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Registration.City)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Registration.Birthdate, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-10">
+                @Html.Kendo().DatePickerFor(model => model.Registration.Birthdate)
+                @Html.ValidationMessageFor(model => model.Registration.Birthdate)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Registration.EMail, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-10">
+                @Html.EditorFor(model => model.Registration.EMail, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Registration.EMail)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Registration.Phone, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-10">
+                @Html.EditorFor(model => model.Registration.Phone, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Registration.Phone)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Registration.LfaEndDateTime, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-10">
+                @Html.Kendo().DatePickerFor(model => model.Registration.LfaEndDateTime)
+                @Html.ValidationMessageFor(model => model.Registration.LfaEndDateTime)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Registration.RegRefNr, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-10">
+                @Html.EditorFor(model => model.Registration.RegRefNr, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Registration.RegRefNr)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Course1, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-10">
+                @(Html.Kendo().DropDownListFor(m => m.Course1).Name("Course1").DataTextField("DisplayName").DataValueField("Id").HtmlAttributes(new { style = "width: 400px" }).DataSource(source =>
+                      {
+                          source.Read(read =>
+                              { read.Action("GetCourseDL", "Courses", new { templateId = 5 }); });
+                      }))
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Course2, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-10">
+                @(Html.Kendo().DropDownList().Name("Course2").DataTextField("DisplayName").DataValueField("Id").HtmlAttributes(new { style = "width: 400px" }).DataSource(source =>
+                      {
+                          source.Read(read =>
+                              { read.Action("GetCourseDL", "Courses", new { templateId = 4 }).Data("filter"); }).ServerFiltering(true);
+                      }).Enable(false).AutoBind(false).CascadeFrom("Course1")
+                )
+                <script>
+                    function filter() {
+                        return {
+                            previous: $("#Course1").val()
+                        };
+                    }
+                </script>
+
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Registration.Remark, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-10">
+                @Html.TextAreaFor(model => model.Registration.Remark, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Registration.Remark)
+            </div>
+        </div>
+        <div>
+            <input type="submit" value="Anmelden" class="btn btn-primary" />
+        </div>
+    </div>
+}

@@ -55,7 +55,7 @@
         @Html.LabelFor(model => model.StartDateTime)
     </div>
     <div>
-        @Html.Kendo().DateTimePickerFor(model => model.StartDateTime)
+        @Html.Kendo().DateTimePickerFor(model => model.StartDateTime).Format("dd.MM.yyyy hh:mm")
     </div>
     <div>
         @Html.LabelFor(model => model.MaxParticipants)

@@ -1,7 +1,7 @@
 ﻿@model CourseBooking.Models.LoginViewModel
 
 @{
-    ViewBag.Title = "Log in";
+    ViewBag.Title = "Anmelden";
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -11,7 +11,6 @@
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-                <h4>Use a local account to log in.</h4>
                 <hr />
                 @Html.ValidationSummary(true)
                 <div class="form-group">
@@ -45,11 +44,6 @@
                     @Html.ActionLink("Register", "Register") if you don't have a local account.
                 </p>
             }
-        </section>
-    </div>
-    <div class="col-md-4">
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new { Action = "ExternalLogin", ReturnUrl = ViewBag.ReturnUrl })
         </section>
     </div>
 </div>

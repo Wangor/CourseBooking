@@ -89,7 +89,6 @@ namespace CourseBooking.Controllers
 
         //
         // GET: /Account/Register
-        [AllowAnonymous]
         public ActionResult Register()
         {
             return View();
@@ -98,7 +97,6 @@ namespace CourseBooking.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {

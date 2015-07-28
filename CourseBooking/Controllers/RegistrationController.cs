@@ -6,6 +6,11 @@
 //   Defines the RegistrationController type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
+
+using System.Globalization;
+using System.Threading;
+using CourseBooking.Services;
+
 namespace CourseBooking.Controllers
 {
   using System;
@@ -25,6 +30,19 @@ namespace CourseBooking.Controllers
   /// </summary>
   public class RegistrationController : Controller
   {
+
+      protected override void Initialize(System.Web.Routing.RequestContext requestContext)
+      {
+          base.Initialize(requestContext);
+
+          const string culture = "de-CH";
+          CultureInfo ci = CultureInfo.GetCultureInfo(culture);
+
+          Thread.CurrentThread.CurrentCulture = ci;
+          Thread.CurrentThread.CurrentUICulture = ci;
+      }
+
+
     #region Fields
 
     /// <summary>
@@ -57,6 +75,7 @@ namespace CourseBooking.Controllers
     /// <returns>
     /// The <see cref="ActionResult"/>.
     /// </returns>
+    [Authorize]
     public ActionResult AssignRegistration(int id)
     {
       var registration = context.Registrations.Include("Courses").FirstOrDefault(c => c.Id == id);
@@ -73,6 +92,7 @@ namespace CourseBooking.Controllers
     /// <returns>
     /// The <see cref="ActionResult"/>.
     /// </returns>
+    [Authorize]
     public ActionResult Confirm(int id)
     {
       Registration registration = this.context.Registrations.FirstOrDefault(r => r.Id == id);
@@ -81,6 +101,7 @@ namespace CourseBooking.Controllers
         registration.Confirmed = true;
         try
         {
+            MailService.ConfirmRegistration(id);
           this.context.SaveChanges();
         }
         catch (Exception exception)
@@ -104,6 +125,7 @@ namespace CourseBooking.Controllers
     /// <returns>
     /// The <see cref="ActionResult"/>.
     /// </returns>
+    [Authorize]
     public ActionResult GetCourseRegistrations([DataSourceRequest] DataSourceRequest request, int? registration)
     {
       Registration entries = this.context.Registrations.Include("Courses").FirstOrDefault(e => e.Id == registration);
@@ -134,6 +156,7 @@ namespace CourseBooking.Controllers
     /// <returns>
     /// The <see cref="ActionResult"/>.
     /// </returns>
+    [Authorize]
     public ActionResult GetRegistrations([DataSourceRequest] DataSourceRequest request, int? registrationId)
     {
       List<Registration> registrations = this.context.Registrations.ToList();
@@ -146,6 +169,7 @@ namespace CourseBooking.Controllers
     /// <returns>
     /// The <see cref="ActionResult"/>.
     /// </returns>
+    [Authorize]
     public ActionResult Index()
     {
       return this.View();
@@ -157,6 +181,7 @@ namespace CourseBooking.Controllers
     /// <returns>
     /// The <see cref="ActionResult"/>.
     /// </returns>
+    [Authorize]
     public ActionResult List()
     {
       return this.View();
@@ -233,6 +258,22 @@ namespace CourseBooking.Controllers
       return new HttpStatusCodeResult(HttpStatusCode.OK);
     }
 
+      
+    [HttpPost]
+    public ActionResult ApplyCustomer(int id, int customerId)
+    {
+        var registration = context.Registrations.Include("Courses").FirstOrDefault(r => r.Id == id);
+        var customer = context.Customers.Include("Registrations").FirstOrDefault(r => r.Id == customerId);
+        if (customer != null)
+        {
+            customer.Registrations.Add(registration);
+            context.SaveChanges();
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
+
+        return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+      
+    }
 
     /// <summary>
     /// The register a 1.
@@ -277,6 +318,23 @@ namespace CourseBooking.Controllers
     {
       var vm = new RegisterVkuViewModel();
       return this.View(vm);
+    }
+
+    /// <summary>
+    /// The register vku.
+    /// </summary>
+    /// <returns>
+    /// The <see cref="ActionResult"/>.
+    /// </returns>
+    [HttpPost]
+    public ActionResult RegisterVku(RegisterVkuViewModel vm)
+    {
+        Registration registration = vm.Registration;
+
+        registration.Courses.Add(this.context.Courses.FirstOrDefault(c => c.Id == vm.Course1));
+        this.context.Registrations.Add(registration);
+        this.context.SaveChanges();
+        return this.RedirectToAction("RegistrationSuccessful", vm);
     }
 
     /// <summary>

@@ -7,12 +7,10 @@ namespace CourseBooking.Migrations
     {
         public override void Up()
         {
-            AddColumn("dbo.Registrations", "CourseType", c => c.String());
         }
         
         public override void Down()
         {
-            DropColumn("dbo.Registrations", "CourseType");
         }
     }
 }

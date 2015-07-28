@@ -18,12 +18,13 @@
 
     function applyCustomer() {
         $.ajax({
-            url: '@Url.Action("CreateCustomer", "Registration")',
+            url: '@Url.Action("ApplyCustomer", "Registration")',
             type: 'POST',
             dataType: 'json',
             cache: false,
             data: {
-                id: @Model.Id
+                id: @Model.Id,
+                customerId: $("#CustomerId").data("kendoDropDownList").value()
             },
             success: function (result) {
                 $("#grid").data("kendoGrid").dataSource.read();

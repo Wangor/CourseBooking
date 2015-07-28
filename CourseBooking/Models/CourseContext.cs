@@ -24,8 +24,6 @@ namespace CourseBooking.Models
 
         public DbSet<Registration> Registrations { get; set; }
 
-        public DbSet<CourseRegistration> CourseRegistrations { get; set; }
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<CourseSet>()
