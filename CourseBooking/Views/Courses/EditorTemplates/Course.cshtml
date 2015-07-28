@@ -17,6 +17,7 @@
                 return dataItem.Id === result.LocationId;
             });
             $("#LocationId").val(result.LocationId).change();
+            dropdownlist.trigger("change");
         })
     }
 </script>

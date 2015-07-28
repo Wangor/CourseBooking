@@ -1,60 +1,63 @@
 ﻿@model CourseBooking.Controllers.RegisterVkuViewModel
-           
-<div class="editor">
-    <h3>Anmeldung</h3>
+@using (Html.BeginForm())
+{
+    <div class="editor">
+        <h3>Anmeldung</h3>
 
-    <div>
-        @Html.LabelFor(model => model.Registration.Name)
-    </div>
-    <div>
-        @Html.EditorFor(model => model.Registration.Name)
-        @Html.ValidationMessageFor(model => model.Registration.Name)
-    </div>
-    <div>
-        @Html.LabelFor(model => model.Registration.PreName)
-    </div>
-    <div>
-        @Html.EditorFor(model => model.Registration.PreName)
-        @Html.ValidationMessageFor(model => model.Registration.PreName)
-    </div>
-    <div>
-        @Html.LabelFor(model => model.Registration.AddressLine)
-    </div>
-    <div>
-        @Html.EditorFor(model => model.Registration.AddressLine)
-        @Html.ValidationMessageFor(model => model.Registration.AddressLine)
-    </div>
-    <div>
-        @Html.LabelFor(model => model.Registration.AddressLine2)
-    </div>
-    <div>
-        @Html.EditorFor(model => model.Registration.AddressLine2)
-        @Html.ValidationMessageFor(model => model.Registration.AddressLine2)
-    </div>
-    <div>
-        @Html.LabelFor(model => model.Registration.EMail)
-    </div>
-    <div>
-        @Html.EditorFor(model => model.Registration.EMail)
-        @Html.ValidationMessageFor(model => model.Registration.EMail)
-    </div>
-    <div>
-        @Html.LabelFor(model => model.Registration.Phone)
-    </div>
-    <div>
-        @Html.EditorFor(model => model.Registration.Phone)
-        @Html.ValidationMessageFor(model => model.Registration.Phone)
-    </div>
-    <div>
-        @Html.LabelFor(model => model.Course1)
-    </div>
-    <div>
-        @(Html.Kendo().DropDownListFor(m=>m.Course1).Name("Course1").DataTextField("DisplayName").DataValueField("Id").HtmlAttributes(new { style = "width: 400px" }).DataSource(source =>
+        <div>
+            @Html.LabelFor(model => model.Registration.Name)
+        </div>
+        <div>
+            @Html.EditorFor(model => model.Registration.Name)
+            @Html.ValidationMessageFor(model => model.Registration.Name)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.Registration.PreName)
+        </div>
+        <div>
+            @Html.EditorFor(model => model.Registration.PreName)
+            @Html.ValidationMessageFor(model => model.Registration.PreName)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.Registration.AddressLine)
+        </div>
+        <div>
+            @Html.EditorFor(model => model.Registration.AddressLine)
+            @Html.ValidationMessageFor(model => model.Registration.AddressLine)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.Registration.AddressLine2)
+        </div>
+        <div>
+            @Html.EditorFor(model => model.Registration.AddressLine2)
+            @Html.ValidationMessageFor(model => model.Registration.AddressLine2)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.Registration.EMail)
+        </div>
+        <div>
+            @Html.EditorFor(model => model.Registration.EMail)
+            @Html.ValidationMessageFor(model => model.Registration.EMail)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.Registration.Phone)
+        </div>
+        <div>
+            @Html.EditorFor(model => model.Registration.Phone)
+            @Html.ValidationMessageFor(model => model.Registration.Phone)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.Course1)
+        </div>
+        <div>
+            @(Html.Kendo().DropDownListFor(m => m.Course1).Name("Course1").DataTextField("DisplayName").DataValueField("Id").HtmlAttributes(new { style = "width: 400px" }).DataSource(source =>
                   {
                       source.Read(read =>
-                      {
-                          read.Action("GetCourseDL", "Courses", new { templateId = 1 });
-                      });
+                          { read.Action("GetCourseDL", "Courses", new { templateId = 1 }); });
                   }))
+        </div>
+        <div>
+            <input type="submit" value="Anmelden"/>
+        </div>
     </div>
-</div>
+}

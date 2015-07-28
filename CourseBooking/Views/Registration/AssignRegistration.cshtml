@@ -1,0 +1,102 @@
+﻿@model CourseBooking.ViewModels.AssignRegistrationViewModel
+<script>
+    function createCustomer() {
+        $.ajax({
+            url: '@Url.Action("CreateCustomer", "Registration")',
+            type: 'POST',
+            dataType: 'json',
+            cache: false,
+            data: {
+                id: @Model.Id
+            },
+            success: function (result) {
+                var url = '@Url.Action("List", "Registration")'
+                window.location.href = url;
+            }
+        });
+    }
+
+    function applyCustomer() {
+        $.ajax({
+            url: '@Url.Action("CreateCustomer", "Registration")',
+            type: 'POST',
+            dataType: 'json',
+            cache: false,
+            data: {
+                id: @Model.Id
+            },
+            success: function (result) {
+                $("#grid").data("kendoGrid").dataSource.read();
+                $("#grid").data("kendoGrid").refresh();
+            }
+        });
+    }
+</script>           
+
+<h3>Anmeldung zuweisen</h3>
+
+<div class="editor">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-xs-4">@Html.LabelFor(model=>model.Name)</div>
+                <div class="col-xs-8">@Model.Name</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">@Html.LabelFor(model => model.PreName)</div>
+                <div class="col-xs-8">@Model.PreName</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">@Html.LabelFor(model => model.AddressLine)</div>
+                <div class="col-xs-8">@Model.AddressLine</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">@Html.LabelFor(model => model.AddressLine2)</div>
+                <div class="col-xs-8">@Model.AddressLine2</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">@Html.LabelFor(model => model.Zip)</div>
+                <div class="col-xs-8">@Model.Zip</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">@Html.LabelFor(model => model.City)</div>
+                <div class="col-xs-8">@Model.City</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">@Html.LabelFor(model => model.Phone)</div>
+                <div class="col-xs-8">@Model.Phone</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">@Html.LabelFor(model => model.EMail)</div>
+                <div class="col-xs-8">@Model.EMail</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">@Html.LabelFor(model => model.Birthdate)</div>
+                <div class="col-xs-8">@Model.Birthdate</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">@Html.LabelFor(model => model.LfaEndDateTime)</div>
+                <div class="col-xs-8">@Model.LfaEndDateTime</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">@Html.LabelFor(model => model.RegRefNr)</div>
+                <div class="col-xs-8">@Model.RegRefNr</div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <b>Kontakt auswählen</b>
+            <div>
+                @(Html.Kendo().DropDownListFor(m => m.CustomerId).Name("CustomerId").DataTextField("Name").DataValueField("Id").HtmlAttributes(new { style = "width: 250px" }).DataSource(source =>
+                      {
+                          source.Read(read =>
+                              {
+                                  read.Action("GetcustomersDL", "Customer");
+                              });
+                      }))
+                <br/>
+                @Html.Kendo().Button().Name("applyButton").Content("Zuweisen").Events(e => e.Click("applyCustomer"))
+                @Html.Kendo().Button().Name("createButton").Content("Neuen Fahrschüler erstellen").Events(e => e.Click("createCustomer"))
+            </div>
+        </div>
+    </div>
+</div>

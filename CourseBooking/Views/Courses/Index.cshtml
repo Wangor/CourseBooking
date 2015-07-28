@@ -1,4 +1,5 @@
 ﻿@using CourseBooking.Models
+@using CourseBooking.ViewModels
 
 @{
     ViewBag.Title = "Index";
@@ -19,6 +20,7 @@
     .ToolBar(toolbar => toolbar.Create())
     .Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("Course"))
     .Pageable()
+    .ClientDetailTemplateId("template")
     .Groupable()
     .Sortable()
     .Scrollable()
@@ -34,6 +36,23 @@
                 .Destroy(update => update.Action("DeleteCourse", "Courses"))
     )
 )
+<script id="template" type="text/kendo-tmpl">
+    @(Html.Kendo().Grid<CourseParticipantViewModel>()
+    .Name("itemGrid_#Id#")
+            .Columns(columns =>
+            {
+                columns.Bound(p => p.Name);
+                columns.Bound(p => p.PreName);
+                columns.Bound(p => p.City);
+                columns.Bound(p => p.Phone);
+            })
+            .Scrollable()
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                .PageSize(20)
+                .Read(read => read.Action("GetCourseRegistrations", "Courses", new { courseId = "#=Id#" }))
+            ).ToClientTemplate())
+</script>
 <script type="text/javascript">
     function error_handler(e) {
         if (e.errors) {

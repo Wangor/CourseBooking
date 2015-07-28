@@ -3,7 +3,7 @@ namespace CourseBooking.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class courseentry : DbMigration
+    public partial class init9 : DbMigration
     {
         public override void Up()
         {

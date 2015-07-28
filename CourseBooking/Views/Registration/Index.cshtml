@@ -1,109 +1,17 @@
-﻿@model CourseBooking.Controllers.RegistrationViewModel
-<script language="javascript">
-    function CourseSelectionChanged(e) {
-        var count = @Model.CourseSet.Entries.Count;
-        for (i = 0; i < count; i++) {
-            var str = "#Template_" + i;
-            var item = $(str).data("kendoDropDownList").dataItem($(str).data("kendoDropDownList").selectedIndex).DisplayName;
-            alert(item);
-        }
-            
-    }
-</script>
-<div class="editor">
+﻿
     <h3>Anmeldung</h3>
 
-    <div>
-        @Html.LabelFor(model => model.Registration.Name)
-    </div>
-    <div>
-        @Html.EditorFor(model => model.Registration.Name)
-        @Html.ValidationMessageFor(model => model.Registration.Name)
-    </div>
-    <div>
-        @Html.LabelFor(model => model.Registration.PreName)
-    </div>
-    <div>
-        @Html.EditorFor(model => model.Registration.PreName)
-        @Html.ValidationMessageFor(model => model.Registration.PreName)
-    </div>
-    <div>
-        @Html.LabelFor(model => model.Registration.AddressLine)
-    </div>
-    <div>
-        @Html.EditorFor(model => model.Registration.AddressLine)
-        @Html.ValidationMessageFor(model => model.Registration.AddressLine)
-    </div>
-    <div>
-        @Html.LabelFor(model => model.Registration.AddressLine2)
-    </div>
-    <div>
-        @Html.EditorFor(model => model.Registration.AddressLine2)
-        @Html.ValidationMessageFor(model => model.Registration.AddressLine2)
-    </div>
-    <div>
-        @Html.LabelFor(model => model.Registration.EMail)
-    </div>
-    <div>
-        @Html.EditorFor(model => model.Registration.EMail)
-        @Html.ValidationMessageFor(model => model.Registration.EMail)
-    </div>
-    <div>
-        @Html.LabelFor(model => model.Registration.Phone)
-    </div>
-    <div>
-        @Html.EditorFor(model => model.Registration.Phone)
-        @Html.ValidationMessageFor(model => model.Registration.Phone)
-    </div>
-    @for (int i = 0; i < Model.CourseSet.Entries.Count; i++)
-    {
-        <div>
-            @if(true)
-            {
-                @(Html.Kendo().DropDownList().Name("Template_" + i).DataTextField("DisplayName").DataValueField("Id").HtmlAttributes(new { style = "width: 400px" }).DataSource(source =>
-                  {
-                      source.Read(read =>
-                      {
-                          read.Action("GetCourseDL", "Courses", new {templateId = Model.CourseSet.Entries[i].CourseTemplate.Id});
-                      });
-                  })
-                  .Events(e=>e.Change("CourseSelectionChanged")))
-            }
-            else
-            {           
-                @(Html.Kendo().DropDownList().Name("Template_" + i).DataTextField("DisplayName").DataValueField("Id").HtmlAttributes(new { style = "width: 400px" }).DataSource(source =>
-                  {
-                      source.Read(read =>
-                      {
-                          read.Action("GetCourseDL", "Courses", new {templateId = Model.CourseSet.Entries[i].CourseTemplate.Id}).Data("filter" + (i - 1).ToString());
-                      });
-                  })
-                      .CascadeFrom("Template_" + (i - 1)))
-            }
-        </div>
-    }
-
+<div>
+    @Html.ActionLink("VKU", "RegisterVku")
+</div>
+<div>
+    @Html.ActionLink("A1", "RegisterA1")
+</div>
+<div>
+    @Html.ActionLink("A", "RegisterA")
+</div>
+<div>
+    @Html.ActionLink("A mit A1", "RegisterAWithA1")
 </div>
 
-<script>
-    
-
-    @for (int i = 0; i < Model.CourseSet.Entries.Count; i++)
-    {<text>
-    function @string.Format("filter{0}",i) ()
-            {
-                return
-                {
-                    @*@if (i > 0)
-                    {
-                        <text>
-                    templateId: @(Model.CourseSet.Entries[i].CourseTemplate.Id ) ,
-                    </text>
-                    }*@
-                    id: $("@string.Format("#Template_{0}",i)").val() ,
-                    previous: 1
-                };
-            }
-     </text>
-    }
-</script>
+ 

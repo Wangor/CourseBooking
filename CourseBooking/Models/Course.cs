@@ -7,12 +7,13 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace CourseBooking.Models
 {
+  using System;
+  using System.Collections.Generic;
+  using System.ComponentModel.DataAnnotations;
+  using System.ComponentModel.DataAnnotations.Schema;
+
   /// <summary>
     /// The course.
     /// </summary>
@@ -72,5 +73,10 @@ namespace CourseBooking.Models
         /// </summary>
         [Display(Name = "Kosten")]
         public string Price { get; set; }
+
+        /// <summary>
+        ///   Gets or sets the registrations.
+        /// </summary>
+        public ICollection<Registration> Registrations { get; set; }
     }
 }

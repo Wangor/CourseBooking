@@ -14,7 +14,10 @@ using CourseBooking.Models;
 namespace CourseBooking.Controllers
 {
     using System.Linq;
+    using System.Net;
     using System.Web.Mvc;
+
+    using CourseBooking.ViewModels;
 
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
@@ -66,7 +69,7 @@ namespace CourseBooking.Controllers
         public ActionResult GetCourses([DataSourceRequest] DataSourceRequest request, int? templateId)
         {
             var courses = this.context.Courses.ToList();
-            return this.Json(courses.ToDataSourceResult(request));
+            return this.Json(courses.ToDataSourceResult(request),JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetCourseDL(int templateId, int previous = 0)
@@ -121,6 +124,22 @@ namespace CourseBooking.Controllers
                 this.context.SaveChanges();
             }
           return Json(new[] { course }.ToDataSourceResult(dsRequest, ModelState));
+        }
+
+        public ActionResult GetCourseRegistrations([DataSourceRequest] DataSourceRequest request, int? courseId)
+        {
+          var entries = this.context.Courses.Include("Registrations").FirstOrDefault(e => e.Id == courseId);
+          
+          if (entries != null)
+          {
+            var registrations = new List<CourseParticipantViewModel>();
+            foreach (var registration in entries.Registrations)
+            {
+              registrations.Add(new CourseParticipantViewModel(registration));
+            }
+            return this.Json(registrations.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+          }
+          return new HttpStatusCodeResult(HttpStatusCode.NoContent);
         }
     }
 

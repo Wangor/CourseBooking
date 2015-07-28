@@ -1,34 +1,49 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Registration.cs" company="Bärtschi Software">
+// <copyright file="AssignRegistrationViewModel.cs" company="Bärtschi Software">
 //   (c) 2015
 // </copyright>
 // <summary>
-//   Defines the Registration type.
+//   Defines the AssignRegistrationViewModel type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-namespace CourseBooking.Models
+
+namespace CourseBooking.ViewModels
 {
   using System;
   using System.Collections.Generic;
   using System.ComponentModel.DataAnnotations;
 
+  using CourseBooking.Models;
+
   /// <summary>
-  ///   The registration.
+  /// The assign registration view model.
   /// </summary>
-  public class Registration
+  public class AssignRegistrationViewModel
   {
-    #region Constructors and Destructors
-
     /// <summary>
-    ///   Initializes a new instance of the <see cref="Registration" /> class.
+    /// Initializes a new instance of the <see cref="AssignRegistrationViewModel"/> class.
     /// </summary>
-    public Registration()
+    /// <param name="registration">
+    /// The registration.
+    /// </param>
+    public AssignRegistrationViewModel(Registration registration)
     {
-      this.Courses = new List<Course>();
-      this.Confirmed = false;
-    }
+      this.Id = registration.Id;
+      this.Name = registration.Name;
+      this.PreName = registration.PreName;
+      this.AddressLine = registration.AddressLine;
+      this.AddressLine2 = registration.AddressLine2;
+      this.Zip = registration.Zip;
+      this.City = registration.City;
+      this.Phone = registration.Phone;
+      this.EMail = registration.EMail;
+      this.Courses = new List<CourseViewModel>();
 
-    #endregion
+      foreach (var course in registration.Courses)
+      {
+        this.Courses.Add(new CourseViewModel { Name = course.Name, StartDateTime = course.StartDateTime, Price = course.Price });
+      }
+    }
 
     #region Public Properties
 
@@ -65,7 +80,7 @@ namespace CourseBooking.Models
     /// <summary>
     ///   Gets or sets the courses.
     /// </summary>
-    public ICollection<Course> Courses { get; set; }
+    public ICollection<CourseViewModel> Courses { get; set; }
 
     /// <summary>
     ///   Gets or sets the e mail.
@@ -139,6 +154,13 @@ namespace CourseBooking.Models
     [Display(Name = "Bemerkung")]
     public string Remark { get; set; }
 
+    /// <summary>
+    /// Gets or sets the customer id.
+    /// </summary>
+    public int CustomerId { get; set; }
+
     #endregion
+
+
   }
 }

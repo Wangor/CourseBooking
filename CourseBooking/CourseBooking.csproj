@@ -187,13 +187,45 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
-    <Compile Include="Migrations\201507150727185_registration.cs" />
-    <Compile Include="Migrations\201507150727185_registration.Designer.cs">
-      <DependentUpon>201507150727185_registration.cs</DependentUpon>
+    <Compile Include="Migrations\201507192201520_init.cs" />
+    <Compile Include="Migrations\201507192201520_init.Designer.cs">
+      <DependentUpon>201507192201520_init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201507151431132_price.cs" />
-    <Compile Include="Migrations\201507151431132_price.Designer.cs">
-      <DependentUpon>201507151431132_price.cs</DependentUpon>
+    <Compile Include="Migrations\201507192215567_init2.cs" />
+    <Compile Include="Migrations\201507192215567_init2.Designer.cs">
+      <DependentUpon>201507192215567_init2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507192222573_init3.cs" />
+    <Compile Include="Migrations\201507192222573_init3.Designer.cs">
+      <DependentUpon>201507192222573_init3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507201747036_init4.cs" />
+    <Compile Include="Migrations\201507201747036_init4.Designer.cs">
+      <DependentUpon>201507201747036_init4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507201754237_init5.cs" />
+    <Compile Include="Migrations\201507201754237_init5.Designer.cs">
+      <DependentUpon>201507201754237_init5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507201802000_init6.cs" />
+    <Compile Include="Migrations\201507201802000_init6.Designer.cs">
+      <DependentUpon>201507201802000_init6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507201807020_init7.cs" />
+    <Compile Include="Migrations\201507201807020_init7.Designer.cs">
+      <DependentUpon>201507201807020_init7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507202116486_init8.cs" />
+    <Compile Include="Migrations\201507202116486_init8.Designer.cs">
+      <DependentUpon>201507202116486_init8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507202155257_init9.cs" />
+    <Compile Include="Migrations\201507202155257_init9.Designer.cs">
+      <DependentUpon>201507202155257_init9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507212152274_init11.cs" />
+    <Compile Include="Migrations\201507212152274_init11.Designer.cs">
+      <DependentUpon>201507212152274_init11.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseContext.cs" />
@@ -206,34 +238,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Location.cs" />
-    <Compile Include="Migrations\201507082141379_base.cs" />
-    <Compile Include="Migrations\201507082141379_base.Designer.cs">
-      <DependentUpon>201507082141379_base.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507082146270_base2.cs" />
-    <Compile Include="Migrations\201507082146270_base2.Designer.cs">
-      <DependentUpon>201507082146270_base2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507111006482_base21.cs" />
-    <Compile Include="Migrations\201507111006482_base21.Designer.cs">
-      <DependentUpon>201507111006482_base21.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507111018065_customer.cs" />
-    <Compile Include="Migrations\201507111018065_customer.Designer.cs">
-      <DependentUpon>201507111018065_customer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507111042596_updateremark.cs" />
-    <Compile Include="Migrations\201507111042596_updateremark.Designer.cs">
-      <DependentUpon>201507111042596_updateremark.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507142002071_template.cs" />
-    <Compile Include="Migrations\201507142002071_template.Designer.cs">
-      <DependentUpon>201507142002071_template.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507142052440_courseentry.cs" />
-    <Compile Include="Migrations\201507142052440_courseentry.Designer.cs">
-      <DependentUpon>201507142052440_courseentry.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -244,9 +248,12 @@
     <Compile Include="QueryServices\PersonQueryService.cs" />
     <Compile Include="Models\Registration.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\AssignRegistrationViewModel.cs" />
     <Compile Include="ViewModels\BookingViewModel.cs" />
+    <Compile Include="ViewModels\CourseParticipantViewModel.cs" />
     <Compile Include="ViewModels\CourseViewModel.cs" />
     <Compile Include="ViewModels\PersonViewModel.cs" />
+    <Compile Include="ViewModels\RegisteredCourseViewModel.cs" />
     <Compile Include="WindsorControllerFactory.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1305,16 +1312,18 @@
     <Content Include="Views\Courses\List.cshtml" />
     <Content Include="Views\CourseSet\EditorTemplates\CourseSet.cshtml" />
     <Content Include="Views\CourseSet\EditorTemplates\CourseSetEntry.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Registration\AssignRegistration.cshtml" />
     <None Include="Views\Registration\Index.cshtml" />
     <None Include="Views\Registration\List.cshtml" />
     <Content Include="Views\Registration\RegisterVku.cshtml" />
     <Content Include="Views\Registration\RegisterA1.cshtml" />
     <Content Include="Views\Registration\RegisterA.cshtml" />
     <Content Include="Views\Registration\RegisterAWithA1.cshtml" />
+    <Content Include="Views\Registration\RegistrationSuccessful.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Customer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -1324,32 +1333,35 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201507082141379_base.resx">
-      <DependentUpon>201507082141379_base.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201507192201520_init.resx">
+      <DependentUpon>201507192201520_init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507082146270_base2.resx">
-      <DependentUpon>201507082146270_base2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201507192215567_init2.resx">
+      <DependentUpon>201507192215567_init2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507111006482_base21.resx">
-      <DependentUpon>201507111006482_base21.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201507192222573_init3.resx">
+      <DependentUpon>201507192222573_init3.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507111018065_customer.resx">
-      <DependentUpon>201507111018065_customer.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201507201747036_init4.resx">
+      <DependentUpon>201507201747036_init4.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507111042596_updateremark.resx">
-      <DependentUpon>201507111042596_updateremark.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201507201754237_init5.resx">
+      <DependentUpon>201507201754237_init5.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507142002071_template.resx">
-      <DependentUpon>201507142002071_template.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201507201802000_init6.resx">
+      <DependentUpon>201507201802000_init6.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507142052440_courseentry.resx">
-      <DependentUpon>201507142052440_courseentry.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201507201807020_init7.resx">
+      <DependentUpon>201507201807020_init7.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507150727185_registration.resx">
-      <DependentUpon>201507150727185_registration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201507202116486_init8.resx">
+      <DependentUpon>201507202116486_init8.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507151431132_price.resx">
-      <DependentUpon>201507151431132_price.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201507202155257_init9.resx">
+      <DependentUpon>201507202155257_init9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507212152274_init11.resx">
+      <DependentUpon>201507212152274_init11.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

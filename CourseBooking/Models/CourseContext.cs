@@ -24,6 +24,8 @@ namespace CourseBooking.Models
 
         public DbSet<Registration> Registrations { get; set; }
 
+        public DbSet<CourseRegistration> CourseRegistrations { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<CourseSet>()
@@ -31,10 +33,21 @@ namespace CourseBooking.Models
                 .WithRequired(cs => cs.CourseSet)
                 .Map(x => x.MapKey("CourseSetId"));
 
-            modelBuilder.Entity<Registration>()
-              .HasMany(c => c.Courses)
-              .WithRequired(cr => cr.Registration)
-              .Map(x => x.MapKey("RegistrationId"));
+          modelBuilder.Entity<Registration>().HasMany(c => c.Courses).WithMany(r=>r.Registrations).Map(
+            x =>
+              {
+                x.MapLeftKey("RegistrationId");
+                x.MapRightKey("Course_Id");
+                x.ToTable("CourseRegistrations");
+              });
+
+          modelBuilder.Entity<Customer>().HasMany(c => c.Registrations).WithMany().Map(
+            x =>
+            {
+              x.MapLeftKey("CustomerId");
+              x.MapRightKey("RegistrationId");
+              x.ToTable("CustomerRegistrations");
+            });
 
             base.OnModelCreating(modelBuilder);
         }
