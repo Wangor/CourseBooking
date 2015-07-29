@@ -1,0 +1,18 @@
+﻿@model IEnumerable<CourseBooking.Models.Course>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Blank.cshtml";
+}
+
+<h2>Unsere nächsten VKU Kurse</h2>
+
+@(Html.Kendo().Grid(Model)
+.Name("grid")
+.Columns(columns =>
+{
+    columns.Bound(p => p.StartDateTime).Format("{0:dd.MM.yyyy HH:mm}");
+    columns.Bound(p => p.Remark);
+    columns.Bound(p => p.Name);
+}))
+@Html.ActionLink("Anmelden", "RegisterVku", "Registration");

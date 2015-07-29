@@ -138,6 +138,14 @@ namespace CourseBooking.Models
     [Display(Name = "Bemerkung")]
     public string Remark { get; set; }
 
-    #endregion
+    /// <summary>
+    ///   Gets or sets the additional info.
+    /// </summary>
+    [Display(Name = "Weitere Angaben")]
+    public string AdditionalInfo { get; set; }
+
+      public Customer Customer { get; set; }
+
+      #endregion
   }
 }

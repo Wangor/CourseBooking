@@ -193,21 +193,13 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
-    <Compile Include="Migrations\201507280800422_init.cs" />
-    <Compile Include="Migrations\201507280800422_init.Designer.cs">
-      <DependentUpon>201507280800422_init.cs</DependentUpon>
+    <Compile Include="Migrations\201507282041024_init.cs" />
+    <Compile Include="Migrations\201507282041024_init.Designer.cs">
+      <DependentUpon>201507282041024_init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201507280803048_init1.cs" />
-    <Compile Include="Migrations\201507280803048_init1.Designer.cs">
-      <DependentUpon>201507280803048_init1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507280810113_init2.cs" />
-    <Compile Include="Migrations\201507280810113_init2.Designer.cs">
-      <DependentUpon>201507280810113_init2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507281157128_init3.cs" />
-    <Compile Include="Migrations\201507281157128_init3.Designer.cs">
-      <DependentUpon>201507281157128_init3.cs</DependentUpon>
+    <Compile Include="Migrations\201507282046253_init1.cs" />
+    <Compile Include="Migrations\201507282046253_init1.Designer.cs">
+      <DependentUpon>201507282046253_init1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
@@ -237,6 +229,7 @@
     <Compile Include="ViewModels\CourseViewModel.cs" />
     <Compile Include="ViewModels\PersonViewModel.cs" />
     <Compile Include="ViewModels\RegisteredCourseViewModel.cs" />
+    <Compile Include="ViewModels\RegistrationsViewModel.cs" />
     <Compile Include="WindsorControllerFactory.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1297,6 +1290,10 @@
     <Content Include="Views\CourseSet\EditorTemplates\CourseSetEntry.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Registration\AssignRegistration.cshtml" />
+    <Content Include="Views\Courses\NextVku.cshtml" />
+    <Content Include="Views\Courses\NextA1.cshtml" />
+    <Content Include="Views\Courses\NextA.cshtml" />
+    <Content Include="Views\Courses\NextAWithA1.cshtml" />
     <None Include="Views\Registration\Index.cshtml" />
     <None Include="Views\Registration\List.cshtml" />
     <Content Include="Views\Registration\RegisterVku.cshtml" />
@@ -1304,6 +1301,7 @@
     <Content Include="Views\Registration\RegisterA.cshtml" />
     <Content Include="Views\Registration\RegisterAWithA1.cshtml" />
     <Content Include="Views\Registration\RegistrationSuccessful.cshtml" />
+    <Content Include="Views\Shared\_Blank.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1316,17 +1314,11 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201507280800422_init.resx">
-      <DependentUpon>201507280800422_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201507282041024_init.resx">
+      <DependentUpon>201507282041024_init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507280803048_init1.resx">
-      <DependentUpon>201507280803048_init1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507280810113_init2.resx">
-      <DependentUpon>201507280810113_init2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507281157128_init3.resx">
-      <DependentUpon>201507281157128_init3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201507282046253_init1.resx">
+      <DependentUpon>201507282046253_init1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

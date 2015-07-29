@@ -1,34 +1,42 @@
 ﻿@model CourseBooking.ViewModels.AssignRegistrationViewModel
 <script>
     function createCustomer() {
+        var registrationId = @Model.Id;
         $.ajax({
             url: '@Url.Action("CreateCustomer", "Registration")',
             type: 'POST',
             dataType: 'json',
             cache: false,
             data: {
-                id: @Model.Id
+                id: registrationId
             },
             success: function (result) {
                 var url = '@Url.Action("List", "Registration")'
                 window.location.href = url;
+            },
+            error: function (error) {
+                alert("error");
             }
         });
     }
 
     function applyCustomer() {
+        var registrationId = @Model.Id;
         $.ajax({
             url: '@Url.Action("ApplyCustomer", "Registration")',
             type: 'POST',
             dataType: 'json',
             cache: false,
             data: {
-                id: @Model.Id,
+                id: registrationId,
                 customerId: $("#CustomerId").data("kendoDropDownList").value()
             },
             success: function (result) {
                 $("#grid").data("kendoGrid").dataSource.read();
                 $("#grid").data("kendoGrid").refresh();
+            },
+            error: function () {
+                alert("error");
             }
         });
     }

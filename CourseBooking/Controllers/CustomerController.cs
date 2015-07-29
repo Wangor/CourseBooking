@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using CourseBooking.ViewModels;
 
 namespace CourseBooking.Controllers
 {
-  using CourseBooking.Models;
+    using System.Linq;
+  using System.Web.Mvc;
+    using Models;
+    using Kendo.Mvc.Extensions;
+    using Kendo.Mvc.UI;
 
-  using Kendo.Mvc.Extensions;
-  using Kendo.Mvc.UI;
-[Authorize]
+    [Authorize]
   public class CustomerController : Controller
     {
     private CourseContext context;
@@ -46,5 +45,18 @@ namespace CourseBooking.Controllers
           var customers = this.context.Customers.ToList();
           return Json(customers, JsonRequestBehavior.AllowGet);
         }
+
+    public ActionResult GetCustomerCourses([DataSourceRequest] DataSourceRequest request, int? customerId)
+    {
+        var customer = this.context.Customers.Include("Registrations").FirstOrDefault(c => c.Id == customerId);
+        var list = new List<RegistrationsViewModel>();
+        
+        foreach (var registration in customer.Registrations)
+        {
+            var reg = new RegistrationsViewModel(registration);
+            list.Add(reg);
+        }
+        return this.Json(list.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+    }
     }
 }

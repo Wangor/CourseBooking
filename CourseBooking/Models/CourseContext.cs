@@ -39,13 +39,18 @@ namespace CourseBooking.Models
                 x.ToTable("CourseRegistrations");
               });
 
-          modelBuilder.Entity<Customer>().HasMany(c => c.Registrations).WithMany().Map(
-            x =>
-            {
-              x.MapLeftKey("CustomerId");
-              x.MapRightKey("RegistrationId");
-              x.ToTable("CustomerRegistrations");
-            });
+          modelBuilder.Entity<Customer>()
+             .HasMany(cs => cs.Registrations)
+             .WithOptional(cs => cs.Customer)
+             .Map(x => x.MapKey("CustomerId"));
+
+          //modelBuilder.Entity<Customer>().HasMany(c => c.Registrations).WithMany().Map(
+          //  x =>
+          //  {
+          //    x.MapLeftKey("CustomerId");
+          //    x.MapRightKey("RegistrationId");
+          //    x.ToTable("CustomerRegistrations");
+          //  });
 
             base.OnModelCreating(modelBuilder);
         }

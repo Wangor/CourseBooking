@@ -1,4 +1,5 @@
 ﻿@using CourseBooking.Models
+@using CourseBooking.ViewModels
 <h3>Kunden</h3>
 
 @(Html.Kendo().Grid<Registration>()
@@ -13,6 +14,7 @@
         columns.Command(command => { command.Edit(); command.Destroy(); }).Width(160);
     })
     .Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("CourseTemplate"))
+    .ClientDetailTemplateId("template")
     .Pageable()
     .Sortable()
     .Scrollable()
@@ -25,4 +27,37 @@
                         .Update(update => update.Action("UpdateCustomer", "Customer"))
                                     .Destroy(update => update.Action("DeleteCustomer", "Customer"))
     )
-)
+      )
+
+<script id="template" type="text/kendo-tmpl">
+    @(Html.Kendo().Grid<RegistrationsViewModel>()
+          .Name("itemGrid_#Id#")
+          .Columns(columns =>
+          {
+              columns.Bound(p => p.Name);
+          })
+          .Scrollable()
+          .ClientDetailTemplateId("coursestemplate")
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .PageSize(20)
+              .Read(read => read.Action("GetCustomerCourses", "Customer", new { customerId = "#=Id#" }))
+          ).ToClientTemplate())
+</script>
+
+<script id="coursestemplate" type="text/kendo-tmpl">
+    @(Html.Kendo().Grid<RegisteredCourseViewModel>()
+    .Name("courseitemGrid_#Id#")
+            .Columns(columns =>
+            {
+                columns.Bound(p => p.Name);
+                columns.Bound(p => p.StartDateTime);
+                columns.Bound(p => p.Price);
+            })
+            .Scrollable()
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                .PageSize(20)
+                                        .Read(read => read.Action("GetCourseRegistrations", "Registration", new { registration = "#=Id#" }))
+            ).ToClientTemplate())
+</script>

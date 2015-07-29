@@ -48,14 +48,14 @@
         @Html.LabelFor(model => model.Remark)
     </div>
     <div>
-        @Html.EditorFor(model => model.Remark)
+        @Html.TextAreaFor(model => model.Remark, new { rows = "8", cols = "50" })
         @Html.ValidationMessageFor(model => model.Remark)
     </div>
     <div>
         @Html.LabelFor(model => model.StartDateTime)
     </div>
     <div>
-        @Html.Kendo().DateTimePickerFor(model => model.StartDateTime).Format("dd.MM.yyyy hh:mm")
+        @Html.Kendo().DateTimePickerFor(model => model.StartDateTime).Format("dd.MM.yyyy HH:mm")
     </div>
     <div>
         @Html.LabelFor(model => model.MaxParticipants)

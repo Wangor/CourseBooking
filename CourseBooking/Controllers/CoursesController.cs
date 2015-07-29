@@ -65,6 +65,34 @@ namespace CourseBooking.Controllers
             return this.View();
         }
 
+        [AllowAnonymous]
+        public ActionResult NextVku()
+        {
+            var nextVkus = context.Courses.Where(c => (c.StartDateTime > DateTime.Now) && (c.CourseTemplateId == 1));
+            return this.View(nextVkus);
+        }
+
+        [AllowAnonymous]
+        public ActionResult NextA1()
+        {
+            var nextA1 = context.Courses.Where(c => (c.StartDateTime > DateTime.Now) && (c.CourseTemplateId == 2));
+            return this.View(nextA1);
+        }
+
+        [AllowAnonymous]
+        public ActionResult NextA()
+        {
+            var nextA = context.Courses.Where(c => (c.StartDateTime > DateTime.Now) && (c.CourseTemplateId == 2));
+            return this.View(nextA);
+        }
+
+        [AllowAnonymous]
+        public ActionResult NextAWithA1()
+        {
+            var nextAWithA1 = context.Courses.Where(c => (c.StartDateTime > DateTime.Now) && (c.CourseTemplateId == 5));
+            return this.View(nextAWithA1);
+        }
+
         public ActionResult List()
         {
             return this.View();
@@ -91,7 +119,7 @@ namespace CourseBooking.Controllers
           var result = new List<Course>();
           if (previous == 0)
           {
-            result = context.Courses.Where(c => c.CourseTemplateId == templateId).ToList();
+            result = context.Courses.Where(c => (c.CourseTemplateId == templateId) && c.StartDateTime > DateTime.Now).ToList();
           }
           else
           {

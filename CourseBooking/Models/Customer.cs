@@ -67,7 +67,7 @@ namespace CourseBooking.Models
     /// <summary>
     ///   Gets or sets the courses.
     /// </summary>
-    public virtual ICollection<Registration> Registrations { get; set; }
+    public ICollection<Registration> Registrations { get; set; }
 
     /// <summary>
     ///   Gets or sets the title.

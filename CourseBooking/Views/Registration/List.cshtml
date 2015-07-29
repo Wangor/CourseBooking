@@ -2,7 +2,7 @@
 @using CourseBooking.ViewModels
 <h3>Anmeldungen</h3>
 
-@(Html.Kendo().Grid<Registration>()
+@(Html.Kendo().Grid<RegistrationsViewModel>()
     .Name("grid")
     .Columns(columns =>
     {
@@ -36,7 +36,7 @@
             .Columns(columns =>
             {
                 columns.Bound(p => p.Name);
-                columns.Bound(p => p.StartDateTime).Format("{0:dd.MM.yyyy hh:mm}");
+                columns.Bound(p => p.StartDateTime).Format("{0:dd.MM.yyyy HH:mm}");
                 columns.Bound(p => p.Price);
             })
             .Scrollable()
@@ -86,6 +86,11 @@
             if (gridData[i].Confirmed) {
                 var currenRow = grid.table.find("tr[data-uid='" + currentUid + "']");
                 var editButton = $(currenRow).find(".k-grid-Bestätigen");
+                editButton.hide();
+            }
+            if (gridData[i].IsAssigned) {
+                var currenRow = grid.table.find("tr[data-uid='" + currentUid + "']");
+                var editButton = $(currenRow).find(".k-grid-Zuweisen");
                 editButton.hide();
             }
         }
