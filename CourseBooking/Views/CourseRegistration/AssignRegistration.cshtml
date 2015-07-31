@@ -3,7 +3,7 @@
     function createCustomer() {
         var registrationId = @Model.Id;
         $.ajax({
-            url: '@Url.Action("CreateCustomer", "Registration")',
+            url: '@Url.Action("CreateCustomer", "CourseRegistration")',
             type: 'POST',
             dataType: 'json',
             cache: false,
@@ -11,7 +11,7 @@
                 id: registrationId
             },
             success: function (result) {
-                var url = '@Url.Action("List", "Registration")'
+                var url = '@Url.Action("Index", "Registrations")'
                 window.location.href = url;
             },
             error: function (error) {
@@ -23,7 +23,7 @@
     function applyCustomer() {
         var registrationId = @Model.Id;
         $.ajax({
-            url: '@Url.Action("ApplyCustomer", "Registration")',
+            url: '@Url.Action("ApplyCustomer", "CourseRegistration")',
             type: 'POST',
             dataType: 'json',
             cache: false,
