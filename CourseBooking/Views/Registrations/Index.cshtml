@@ -15,7 +15,7 @@
     })
         //.Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("CourseTemplate"))
     .Pageable()
-        //.ClientDetailTemplateId("template")
+        .ClientDetailTemplateId("template")
     .Sortable()
     .Scrollable()
     .HtmlAttributes(new { style = "height:430px;" })
@@ -54,7 +54,7 @@
 
             var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
             $.ajax({
-                url: '@Url.Action("Confirm", "Registration")',
+                url: '@Url.Action("Confirm", "CourseRegistration")',
                 type: 'POST',
                 dataType: 'json',
                 cache: false,
@@ -73,7 +73,7 @@
             e.preventDefault();
 
             var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
-            var url = '@Url.Action("AssignRegistration", "Registration")?id=' + dataItem.Id;
+            var url = '@Url.Action("AssignRegistration", "CourseRegistration")?id=' + dataItem.Id;
             window.location.href = url;
         }
 
