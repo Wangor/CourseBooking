@@ -222,6 +222,7 @@ namespace CourseBooking.Controllers
 
       registration.Courses.Add(this.context.Courses.FirstOrDefault(c => c.Id == vm.Course1));
       registration.Courses.Add(this.context.Courses.FirstOrDefault(c => c.Id == vm.Course2));
+        registration.RegistrationDateTime = DateTime.Now;
       this.context.Registrations.Add(registration);
       this.context.SaveChanges();
       return this.RedirectToAction("RegistrationSuccessful", vm);
@@ -258,6 +259,7 @@ namespace CourseBooking.Controllers
                          Title = registration.Title,
                          Birtdate = registration.Birthdate
                        };
+      registration.RegistrationDateTime = DateTime.Now;
       customer.Registrations.Add(registration);
       context.Customers.Add(customer);
       context.SaveChanges();
@@ -297,6 +299,7 @@ namespace CourseBooking.Controllers
 
       registration.Courses.Add(this.context.Courses.FirstOrDefault(c => c.Id == vm.Course1));
       registration.Courses.Add(this.context.Courses.FirstOrDefault(c => c.Id == vm.Course2));
+      registration.RegistrationDateTime = DateTime.Now;
       this.context.Registrations.Add(registration);
       this.context.SaveChanges();
       return this.RedirectToAction("RegistrationSuccessful", vm);
@@ -338,6 +341,7 @@ namespace CourseBooking.Controllers
         Registration registration = vm.Registration;
 
         registration.Courses.Add(this.context.Courses.FirstOrDefault(c => c.Id == vm.Course1));
+        registration.RegistrationDateTime = DateTime.Now;
         this.context.Registrations.Add(registration);
         this.context.SaveChanges();
         return this.RedirectToAction("RegistrationSuccessful", vm);

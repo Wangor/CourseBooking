@@ -43,11 +43,12 @@ namespace CourseBooking.Migrations
                         LfaEndDateTime = c.DateTime(),
                         RegRefNr = c.String(),
                         Remark = c.String(),
+                        RegistrationDateTime = c.DateTime(nullable: false),
                         AdditionalInfo = c.String(),
-                        CustomerId = c.Int(nullable: false),
+                        CustomerId = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Customers", t => t.CustomerId, cascadeDelete: true)
+                .ForeignKey("dbo.Customers", t => t.CustomerId)
                 .Index(t => t.CustomerId);
             
             CreateTable(
@@ -65,6 +66,8 @@ namespace CourseBooking.Migrations
                         Title = c.String(),
                         Birtdate = c.DateTime(),
                         Zip = c.String(),
+                        Remarks = c.String(),
+                        AdditionalInformation = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             

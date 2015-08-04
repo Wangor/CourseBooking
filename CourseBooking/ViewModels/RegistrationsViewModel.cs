@@ -7,6 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
 using CourseBooking.Models;
 
 namespace CourseBooking.ViewModels
@@ -35,7 +36,13 @@ namespace CourseBooking.ViewModels
             this.CourseType = registration.CourseType;
             this.IsAssigned = registration.Customer != null;
             this.Confirmed = registration.Confirmed;
+            this.RegistrationDateTime = registration.RegistrationDateTime;
         }
+
+        /// <summary>
+        /// Gets or sets the registration date time.
+        /// </summary>
+        public DateTime RegistrationDateTime { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether confirmed.

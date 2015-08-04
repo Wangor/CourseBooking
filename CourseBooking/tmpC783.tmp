@@ -9,10 +9,10 @@
     <section name="entityFramework" type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
   </configSections>
   <connectionStrings>
-    <!--<add name="DefaultConnection" connectionString="Data Source=.;Initial Catalog=CourseBooking;Integrated Security=True" providerName="System.Data.SqlClient" />
-    <add name="CourseConnection" connectionString="Data Source=.;Initial Catalog=CourseBooking;Integrated Security=True" providerName="System.Data.SqlClient" />-->
-    <add name="DefaultConnection" connectionString="Server=8005e27a-91ae-46c4-bf6a-a4d60166e1ea.sqlserver.sequelizer.com;Database=db8005e27a91ae46c4bf6aa4d60166e1ea;User ID=rbmkmipkiuiurtng;Password=kcfDZATtKxsCnsaHMwxtuDHSVwJjXBpWqZLHWp5osjWfbhmaWSjtxn3NBuRCYHDh;" providerName="System.Data.SqlClient" />
-    <add name="CourseConnection" connectionString="Server=8005e27a-91ae-46c4-bf6a-a4d60166e1ea.sqlserver.sequelizer.com;Database=db8005e27a91ae46c4bf6aa4d60166e1ea;User ID=rbmkmipkiuiurtng;Password=kcfDZATtKxsCnsaHMwxtuDHSVwJjXBpWqZLHWp5osjWfbhmaWSjtxn3NBuRCYHDh;" providerName="System.Data.SqlClient" />
+    <add name="DefaultConnection" connectionString="Data Source=.;Initial Catalog=CourseBooking;Integrated Security=True" providerName="System.Data.SqlClient" />
+    <add name="CourseConnection" connectionString="Data Source=.;Initial Catalog=CourseBooking;Integrated Security=True" providerName="System.Data.SqlClient" />
+    <!--<add name="DefaultConnection" connectionString="Server=8005e27a-91ae-46c4-bf6a-a4d60166e1ea.sqlserver.sequelizer.com;Database=db8005e27a91ae46c4bf6aa4d60166e1ea;User ID=rbmkmipkiuiurtng;Password=kcfDZATtKxsCnsaHMwxtuDHSVwJjXBpWqZLHWp5osjWfbhmaWSjtxn3NBuRCYHDh;" providerName="System.Data.SqlClient" />
+    <add name="CourseConnection" connectionString="Server=8005e27a-91ae-46c4-bf6a-a4d60166e1ea.sqlserver.sequelizer.com;Database=db8005e27a91ae46c4bf6aa4d60166e1ea;User ID=rbmkmipkiuiurtng;Password=kcfDZATtKxsCnsaHMwxtuDHSVwJjXBpWqZLHWp5osjWfbhmaWSjtxn3NBuRCYHDh;" providerName="System.Data.SqlClient" />-->
   </connectionStrings>
   <appSettings>
     <add key="webpages:Version" value="3.0.0.0" />
@@ -24,9 +24,11 @@
     <authentication mode="None" />
     <compilation debug="true" targetFramework="4.5" />
     <httpRuntime targetFramework="4.5" />
-  <pages>
-    <namespaces>
-      <add namespace="Kendo.Mvc.UI" /></namespaces></pages>
+    <pages>
+      <namespaces>
+        <add namespace="Kendo.Mvc.UI" />
+      </namespaces>
+    </pages>
   </system.web>
   <system.webServer>
     <modules>
@@ -62,6 +64,10 @@
       <dependentAssembly>
         <assemblyIdentity name="Microsoft.Owin.Security" publicKeyToken="31bf3856ad364e35" culture="neutral" />
         <bindingRedirect oldVersion="0.0.0.0-2.1.0.0" newVersion="2.1.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="EntityFramework" culture="neutral" publicKeyToken="b77a5c561934e089" />
+        <codeBase version="6.0.0.0" href="file:///C:/Repos/CourseBooking/packages/EntityFramework.6.0.0/lib/net45/EntityFramework.DLL" />
       </dependentAssembly>
     </assemblyBinding>
   </runtime>

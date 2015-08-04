@@ -35,6 +35,7 @@
           .Columns(columns =>
           {
               columns.Bound(p => p.Name);
+              columns.Bound(p => p.RegistrationDateTime).Format("{0:dd.MM.yyyy HH:mm}");
           })
           .Scrollable()
           .ClientDetailTemplateId("coursestemplate")
@@ -51,7 +52,7 @@
             .Columns(columns =>
             {
                 columns.Bound(p => p.Name);
-                columns.Bound(p => p.StartDateTime);
+                columns.Bound(p => p.StartDateTime).Format("{0:dd.MM.yyyy HH:mm}");
                 columns.Bound(p => p.Price);
             })
             .Scrollable()

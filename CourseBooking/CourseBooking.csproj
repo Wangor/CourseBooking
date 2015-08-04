@@ -193,13 +193,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
-    <Compile Include="Migrations\201507282041024_init.cs" />
-    <Compile Include="Migrations\201507282041024_init.Designer.cs">
-      <DependentUpon>201507282041024_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507282046253_init1.cs" />
-    <Compile Include="Migrations\201507282046253_init1.Designer.cs">
-      <DependentUpon>201507282046253_init1.cs</DependentUpon>
+    <Compile Include="Migrations\201508042029381_init.cs" />
+    <Compile Include="Migrations\201508042029381_init.Designer.cs">
+      <DependentUpon>201508042029381_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
@@ -1314,11 +1310,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201507282041024_init.resx">
-      <DependentUpon>201507282041024_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507282046253_init1.resx">
-      <DependentUpon>201507282046253_init1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201508042029381_init.resx">
+      <DependentUpon>201508042029381_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
