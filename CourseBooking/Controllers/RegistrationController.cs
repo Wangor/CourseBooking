@@ -232,6 +232,8 @@ namespace CourseBooking.Controllers
         registration.RegistrationDateTime = DateTime.Now;
       this.context.Registrations.Add(registration);
       this.context.SaveChanges();
+        MailService.ConfirmRegistrationDirect(registration.Id);
+        MailService.ConfirmRegistrationInformBackoffice(registration.Id);
       return this.RedirectToAction("RegistrationSuccessful", vm);
     }
 
@@ -270,6 +272,8 @@ namespace CourseBooking.Controllers
       customer.Registrations.Add(registration);
       context.Customers.Add(customer);
       context.SaveChanges();
+      MailService.ConfirmRegistrationDirect(registration.Id);
+      MailService.ConfirmRegistrationInformBackoffice(registration.Id);
       return Json(new { state = "ok"});
     }
 
@@ -309,6 +313,8 @@ namespace CourseBooking.Controllers
       registration.RegistrationDateTime = DateTime.Now;
       this.context.Registrations.Add(registration);
       this.context.SaveChanges();
+      MailService.ConfirmRegistrationDirect(registration.Id);
+      MailService.ConfirmRegistrationInformBackoffice(registration.Id);
       return this.RedirectToAction("RegistrationSuccessful", vm);
     }
 
@@ -351,6 +357,8 @@ namespace CourseBooking.Controllers
         registration.RegistrationDateTime = DateTime.Now;
         this.context.Registrations.Add(registration);
         this.context.SaveChanges();
+        MailService.ConfirmRegistrationDirect(registration.Id);
+        MailService.ConfirmRegistrationInformBackoffice(registration.Id);
         return this.RedirectToAction("RegistrationSuccessful", vm);
     }
 
