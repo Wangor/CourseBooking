@@ -12,9 +12,9 @@
         columns.Bound(p => p.CourseType);
         columns.Command(command => command.Custom("Zuweisen").Click("assign"));
         columns.Command(command => command.Custom("Bestätigen").Click("confirm"));
-        columns.Command(command => command.Destroy()).Width(160);
+        //columns.Command(command => command.Destroy()).Width(160);
     })
-    .Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("CourseTemplate"))
+    //.Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("CourseTemplate"))
     .Pageable()
     .ClientDetailTemplateId("template")
     .Sortable()
@@ -25,8 +25,8 @@
         .PageSize(20)
         .Model(model => model.Id(p => p.Id))
                     .Read(read => read.Action("GetRegistrations", "Registration"))
-                    .Update(update => update.Action("UpdateRegistration", "Registration"))
-                                .Destroy(update => update.Action("DeleteRegistration", "Registration"))
+                    //.Update(update => update.Action("UpdateRegistration", "Registration"))
+                                //.Destroy(update => update.Action("DeleteRegistration", "Registration"))
     ).Events(e => e.DataBound("onDataBound"))
 )
 
