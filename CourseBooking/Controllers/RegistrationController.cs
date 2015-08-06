@@ -138,7 +138,7 @@ namespace CourseBooking.Controllers
           courses.Add(new RegisteredCourseViewModel(course));
         }
 
-        return this.Json(courses.ToDataSourceResult(request));
+        return this.Json(courses.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
       }
 
       return new HttpStatusCodeResult(HttpStatusCode.NoContent);
@@ -159,14 +159,21 @@ namespace CourseBooking.Controllers
     [Authorize]
     public ActionResult GetRegistrations([DataSourceRequest] DataSourceRequest request, int? registrationId)
     {
-      List<Registration> registrations = this.context.Registrations.Include("Customer").ToList();
-        var list = new List<RegistrationsViewModel>();
-        foreach (var reg in registrations)
+     try
         {
-            list.Add(new RegistrationsViewModel(reg));
+            List<Registration> registrations = this.context.Registrations.Include("Customer").ToList();
+            var list = new List<RegistrationsViewModel>();
+            foreach (var reg in registrations)
+            {
+                list.Add(new RegistrationsViewModel(reg));
+            }
+            return this.Json(list.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
-
-        return this.Json(list.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+        catch (Exception e)
+        {
+            return this.Json(new {status = "error", message = e.Message, stacktrace = e.StackTrace});
+        }
+        
     }
 
     /// <summary>
