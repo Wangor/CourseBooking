@@ -193,6 +193,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\CourseRegistrationController.cs" />
+    <Compile Include="Controllers\RegistrationsController.cs" />
     <Compile Include="Migrations\201508042029381_init.cs" />
     <Compile Include="Migrations\201508042029381_init.Designer.cs">
       <DependentUpon>201508042029381_init.cs</DependentUpon>
@@ -1298,6 +1299,7 @@
     <Content Include="Views\CourseRegistration\RegisterAWithA1.cshtml" />
     <Content Include="Views\CourseRegistration\RegistrationSuccessful.cshtml" />
     <Content Include="Views\Shared\_Blank.cshtml" />
+    <Content Include="Views\Registrations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
