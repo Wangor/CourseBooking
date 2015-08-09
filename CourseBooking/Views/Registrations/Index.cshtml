@@ -6,11 +6,11 @@
     .Columns(columns =>
     {
         columns.Bound(p => p.Name);
-        //columns.Bound(p => p.PreName);
-        //columns.Bound(p => p.City);
-        //columns.Bound(p => p.CourseType);
-        //columns.Command(command => command.Custom("Zuweisen").Click("assign"));
-        //columns.Command(command => command.Custom("Bestätigen").Click("confirm"));
+        columns.Bound(p => p.PreName);
+        columns.Bound(p => p.City);
+        columns.Bound(p => p.CourseType);
+        columns.Command(command => command.Custom("Zuweisen").Click("assign"));
+        columns.Command(command => command.Custom("Bestätigen").Click("confirm"));
         //columns.Command(command => command.Destroy()).Width(160);
     })
         //.Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("CourseTemplate"))
@@ -19,12 +19,80 @@
     .Sortable()
     .Scrollable()
     .HtmlAttributes(new { style = "height:430px;" })
-    .DataSource(dataSource => dataSource
-        .Ajax()
-        .PageSize(20)
-        .Model(model => model.Id(p => p.Id))
-                    .Read(read => read.Action("GetRegistrations", "CourseRegistration"))
-        //.Update(update => update.Action("UpdateRegistration", "Registration"))
-        //.Destroy(update => update.Action("DeleteRegistration", "Registration"))
-    )
-)
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .PageSize(20)
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("GetRegistrations", "CourseRegistration"))
+      //.Update(update => update.Action("UpdateRegistration", "Registration"))
+      //.Destroy(update => update.Action("DeleteRegistration", "Registration"))
+      )
+          )
+
+
+<script id="template" type="text/kendo-tmpl">
+        @(Html.Kendo().Grid<RegisteredCourseViewModel>()
+        .Name("itemGrid_#Id#")
+                .Columns(columns =>
+                {
+                    columns.Bound(p => p.Name);
+                    columns.Bound(p => p.StartDateTime).Format("{0:dd.MM.yyyy HH:mm}");
+                    columns.Bound(p => p.Price);
+                })
+                .Scrollable()
+                .DataSource(dataSource => dataSource
+                    .Ajax()
+                    .PageSize(20)
+                    .Read(read => read.Action("GetCourseRegistrations", "Registration", new { registration = "#=Id#" }))
+                ).ToClientTemplate())
+    </script>
+
+    <script type="text/javascript">
+
+        function confirm(e) {
+            e.preventDefault();
+
+            var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+            $.ajax({
+                url: '@Url.Action("Confirm", "Registration")',
+                type: 'POST',
+                dataType: 'json',
+                cache: false,
+                data: {
+                    id: dataItem.Id
+                },
+                success: function(result) {
+                    $("#grid").data("kendoGrid").dataSource.read();
+                    $("#grid").data("kendoGrid").refresh();
+                }
+            });
+
+        }
+
+        function assign(e) {
+            e.preventDefault();
+
+            var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+            var url = '@Url.Action("AssignRegistration", "Registration")?id=' + dataItem.Id;
+            window.location.href = url;
+        }
+
+        function onDataBound(e) {
+            var grid = $("#grid").data("kendoGrid");
+            var gridData = grid.dataSource.view();
+
+            for (var i = 0; i < gridData.length; i++) {
+                var currentUid = gridData[i].uid;
+                if (gridData[i].Confirmed) {
+                    var currenRow = grid.table.find("tr[data-uid='" + currentUid + "']");
+                    var editButton = $(currenRow).find(".k-grid-Bestätigen");
+                    editButton.hide();
+                }
+                if (gridData[i].IsAssigned) {
+                    var currenRow = grid.table.find("tr[data-uid='" + currentUid + "']");
+                    var editButton = $(currenRow).find(".k-grid-Zuweisen");
+                    editButton.hide();
+                }
+            }
+        }
+    </script>
