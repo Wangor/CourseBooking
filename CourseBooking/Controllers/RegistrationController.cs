@@ -7,25 +7,22 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.Globalization;
-using System.Threading;
-using CourseBooking.Services;
-
 namespace CourseBooking.Controllers
 {
-  using System;
-  using System.Collections.Generic;
-  using System.Linq;
-  using System.Net;
-  using System.Web.Mvc;
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Linq;
+    using System.Net;
+    using System.Threading;
+    using System.Web.Mvc;
+    using Models;
+    using Services;
+    using ViewModels;
+    using Kendo.Mvc.Extensions;
+    using Kendo.Mvc.UI;
 
-  using CourseBooking.Models;
-  using CourseBooking.ViewModels;
-
-  using Kendo.Mvc.Extensions;
-  using Kendo.Mvc.UI;
-
-  /// <summary>
+    /// <summary>
   /// The registration controller.
   /// </summary>
   public class RegistrationController : Controller
@@ -161,12 +158,9 @@ namespace CourseBooking.Controllers
     {
      try
         {
-            List<Registration> registrations = this.context.Registrations.Include("Customer").ToList();
-            var list = new List<RegistrationsViewModel>();
-            foreach (var reg in registrations)
-            {
-                list.Add(new RegistrationsViewModel(reg));
-            }
+            var registrations = this.context.Registrations.Include("Customer").ToList();
+            var list = registrations.Select(reg => new RegistrationsViewModel(reg)).ToList();
+            return Redirect("http://www.google.ch");
             return this.Json(list.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
         catch (Exception e)
