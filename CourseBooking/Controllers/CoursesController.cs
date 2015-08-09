@@ -7,27 +7,23 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Threading;
-using CourseBooking.Models;
-
 namespace CourseBooking.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using System.Net;
+    using System.Threading;
     using System.Web.Mvc;
-
-    using CourseBooking.ViewModels;
-
+    using Models;
+    using ViewModels;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
 
     /// <summary>
     /// The courses controller.
     /// </summary>
-    [Authorize]
     public class CoursesController : Controller
     {
         /// <summary>
