@@ -15,7 +15,7 @@
     })
     //.Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("CourseTemplate"))
     .Pageable()
-    .ClientDetailTemplateId("template")
+    //.ClientDetailTemplateId("template")
     .Sortable()
     .Scrollable()
     .HtmlAttributes(new { style = "height:430px;" })
@@ -29,7 +29,7 @@
     ).Events(e => e.DataBound("onDataBound"))
 )
 
-<script id="template" type="text/kendo-tmpl">
+@*<script id="template" type="text/kendo-tmpl">
     @(Html.Kendo().Grid<RegisteredCourseViewModel>()
     .Name("itemGrid_#Id#")
             .Columns(columns =>
@@ -94,4 +94,4 @@
             }
         }
     }
-</script>
+</script>*@
