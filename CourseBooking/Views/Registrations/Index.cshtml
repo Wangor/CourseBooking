@@ -1,50 +1,30 @@
-﻿@using CourseBooking.Models
-@using CourseBooking.ViewModels
-<h2>Kurse</h2>
+﻿@using CourseBooking.ViewModels
+<h3>Anmeldungen</h3>
 
-@(Html.Kendo().Grid<Course>()
+@(Html.Kendo().Grid<RegistrationsViewModel>()
     .Name("grid")
     .Columns(columns =>
     {
         columns.Bound(p => p.Name);
-        columns.Bound(p => p.StartDateTime).Format("{0:dd.MM.yyyy HH:mm}").Width(160);
-        columns.Bound(p => p.Remark).Width(160);
-        columns.Bound(p => p.Price).Width(160);
-        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(160);
+        //columns.Bound(p => p.PreName);
+        //columns.Bound(p => p.City);
+        //columns.Bound(p => p.CourseType);
+        //columns.Command(command => command.Custom("Zuweisen").Click("assign"));
+        //columns.Command(command => command.Custom("Bestätigen").Click("confirm"));
+        //columns.Command(command => command.Destroy()).Width(160);
     })
-    .ToolBar(toolbar => toolbar.Create())
-    .Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("Course"))
+        //.Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("CourseTemplate"))
     .Pageable()
-    .ClientDetailTemplateId("template")
-    .Groupable()
+        //.ClientDetailTemplateId("template")
     .Sortable()
     .Scrollable()
-    .HtmlAttributes(new { style = "height:600px;" })
+    .HtmlAttributes(new { style = "height:430px;" })
     .DataSource(dataSource => dataSource
         .Ajax()
         .PageSize(20)
-        //.Events(events => events.Error("error_handler"))
         .Model(model => model.Id(p => p.Id))
-            .Create(update => update.Action("Course_Create", "Courses"))
-                .Read(read => read.Action("GetCourses", "Courses"))
-            .Update(update => update.Action("Course_Update", "Courses"))
-                .Destroy(update => update.Action("DeleteCourse", "Courses"))
+                    .Read(read => read.Action("GetRegistrations", "CourseRegistration"))
+        //.Update(update => update.Action("UpdateRegistration", "Registration"))
+        //.Destroy(update => update.Action("DeleteRegistration", "Registration"))
     )
 )
-<script id="template" type="text/kendo-tmpl">
-    @(Html.Kendo().Grid<CourseParticipantViewModel>()
-    .Name("itemGrid_#Id#")
-            .Columns(columns =>
-            {
-                columns.Bound(p => p.Name);
-                columns.Bound(p => p.PreName);
-                columns.Bound(p => p.City);
-                columns.Bound(p => p.Phone);
-            })
-            .Scrollable()
-            .DataSource(dataSource => dataSource
-                .Ajax()
-                .PageSize(20)
-                .Read(read => read.Action("GetCourseRegistrations", "Courses", new { courseId = "#=Id#" }))
-            ).ToClientTemplate())
-</script>
