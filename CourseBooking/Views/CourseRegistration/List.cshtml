@@ -23,7 +23,7 @@
         .Ajax()
         .PageSize(20)
         .Model(model => model.Id(p => p.Id))
-                    .Read(read => read.Action("GetRegistrations", "Registration"))
+                    .Read(read => read.Action("GetRegistrations", "CourseRegistration"))
                     //.Update(update => update.Action("UpdateRegistration", "Registration"))
                                 //.Destroy(update => update.Action("DeleteRegistration", "Registration"))
     )

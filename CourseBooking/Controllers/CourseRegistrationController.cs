@@ -25,7 +25,7 @@ namespace CourseBooking.Controllers
     /// <summary>
   /// The registration controller.
   /// </summary>
-  public class RegistrationController : Controller
+  public class CourseRegistrationController : Controller
   {
 
       protected override void Initialize(System.Web.Routing.RequestContext requestContext)
@@ -52,9 +52,9 @@ namespace CourseBooking.Controllers
     #region Constructors and Destructors
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="RegistrationController"/> class.
+    /// Initializes a new instance of the <see cref="CourseRegistrationController"/> class.
     /// </summary>
-    public RegistrationController()
+    public CourseRegistrationController()
     {
       this.context = new CourseContext();
     }
@@ -160,7 +160,6 @@ namespace CourseBooking.Controllers
         {
             var registrations = this.context.Registrations.Include("Customer").ToList();
             var list = registrations.Select(reg => new RegistrationsViewModel(reg)).ToList();
-            return Redirect("http://www.google.ch");
             return this.Json(list.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
         catch (Exception e)

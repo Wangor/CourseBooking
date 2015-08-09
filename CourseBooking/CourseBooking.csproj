@@ -192,7 +192,7 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
-    <Compile Include="Controllers\RegistrationController.cs" />
+    <Compile Include="Controllers\CourseRegistrationController.cs" />
     <Compile Include="Migrations\201508042029381_init.cs" />
     <Compile Include="Migrations\201508042029381_init.Designer.cs">
       <DependentUpon>201508042029381_init.cs</DependentUpon>
@@ -1285,18 +1285,18 @@
     <Content Include="Views\CourseSet\EditorTemplates\CourseSet.cshtml" />
     <Content Include="Views\CourseSet\EditorTemplates\CourseSetEntry.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
-    <Content Include="Views\Registration\AssignRegistration.cshtml" />
+    <Content Include="Views\CourseRegistration\AssignRegistration.cshtml" />
     <Content Include="Views\Courses\NextVku.cshtml" />
     <Content Include="Views\Courses\NextA1.cshtml" />
     <Content Include="Views\Courses\NextA.cshtml" />
     <Content Include="Views\Courses\NextAWithA1.cshtml" />
-    <None Include="Views\Registration\Index.cshtml" />
-    <None Include="Views\Registration\List.cshtml" />
-    <Content Include="Views\Registration\RegisterVku.cshtml" />
-    <Content Include="Views\Registration\RegisterA1.cshtml" />
-    <Content Include="Views\Registration\RegisterA.cshtml" />
-    <Content Include="Views\Registration\RegisterAWithA1.cshtml" />
-    <Content Include="Views\Registration\RegistrationSuccessful.cshtml" />
+    <None Include="Views\CourseRegistration\Index.cshtml" />
+    <None Include="Views\CourseRegistration\List.cshtml" />
+    <Content Include="Views\CourseRegistration\RegisterVku.cshtml" />
+    <Content Include="Views\CourseRegistration\RegisterA1.cshtml" />
+    <Content Include="Views\CourseRegistration\RegisterA.cshtml" />
+    <Content Include="Views\CourseRegistration\RegisterAWithA1.cshtml" />
+    <Content Include="Views\CourseRegistration\RegistrationSuccessful.cshtml" />
     <Content Include="Views\Shared\_Blank.cshtml" />
   </ItemGroup>
   <ItemGroup>
