@@ -9,9 +9,8 @@
         columns.Bound(p => p.Name);
         columns.Bound(p => p.PreName);
         columns.Bound(p => p.City);
-        columns.Bound(p => p.CourseType);
-        columns.Bound(p => p.Confirmed);
-        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(160);
+        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(240);
+        columns.Command(command => command.Custom("Details").Click("details"));
     })
     .Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("CourseTemplate"))
     .ClientDetailTemplateId("template")
@@ -48,17 +47,30 @@
 
 <script id="coursestemplate" type="text/kendo-tmpl">
     @(Html.Kendo().Grid<RegisteredCourseViewModel>()
-    .Name("courseitemGrid_#Id#")
-            .Columns(columns =>
-            {
-                columns.Bound(p => p.Name);
-                columns.Bound(p => p.StartDateTime).Format("{0:dd.MM.yyyy HH:mm}");
-                columns.Bound(p => p.Price);
-            })
-            .Scrollable()
-            .DataSource(dataSource => dataSource
-                .Ajax()
-                .PageSize(20)
-                                        .Read(read => read.Action("GetCourseRegistrations", "CourseRegistration", new { registration = "#=Id#" }))
-            ).ToClientTemplate())
+          .Name("courseitemGrid_#Id#")
+          .Columns(columns =>
+          {
+              columns.Bound(p => p.Name);
+              columns.Bound(p => p.StartDateTime).Format("{0:dd.MM.yyyy HH:mm}");
+              columns.Bound(p => p.Price);
+          })
+          .Scrollable()
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .PageSize(20)
+              .Read(read => read.Action("GetCourseRegistrations", "CourseRegistration", new { registration = "#=Id#" }))
+          ).ToClientTemplate())
+</script>
+
+<script type="text/javascript">
+
+        function details(e) {
+            e.preventDefault();
+
+            var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+            var url = '@Url.Action("Details", "Customer")?customerId=' + dataItem.Id;
+            window.location.href = url;
+        }
+
+
 </script>

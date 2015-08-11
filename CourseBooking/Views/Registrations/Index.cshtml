@@ -5,6 +5,7 @@
     .Name("grid")
     .Columns(columns =>
     {
+        columns.Bound(p => p.RegistrationDateTime).Format("{0:dd.MM.yyyy HH:mm}");
         columns.Bound(p => p.Name);
         columns.Bound(p => p.PreName);
         columns.Bound(p => p.City);
@@ -26,7 +27,7 @@
           .Read(read => read.Action("GetRegistrations", "CourseRegistration"))
       //.Update(update => update.Action("UpdateRegistration", "Registration"))
       //.Destroy(update => update.Action("DeleteRegistration", "Registration"))
-      )
+      ).Events(e => e.DataBound("onDataBound"))
           )
 
 

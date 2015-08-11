@@ -13,7 +13,7 @@
         columns.Bound(p => p.MaxParticipants);
         columns.Bound(p => p.NumberOfHours);
         columns.Bound(p => p.Price);
-        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(160);
+        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(240);
     })
     .ToolBar(toolbar => toolbar.Create())
     .Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("CourseTemplate"))

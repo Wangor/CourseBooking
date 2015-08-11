@@ -88,17 +88,17 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Course1, new { @class = "control-label col-xs-2" })
             <div class="col-xs-10">
-                @(Html.Kendo().DropDownListFor(m => m.Course1).Name("Course1").DataTextField("DisplayName").DataValueField("Id").HtmlAttributes(new { style = "width: 400px" }).DataSource(source =>
+                @(Html.Kendo().DropDownListFor(m => m.Course1).Name("Course1").DataTextField("DisplayName").DataValueField("Id").HtmlAttributes(new { style = "width: 500px" }).DataSource(source =>
                       {
                           source.Read(read =>
                               { read.Action("GetCourseDL", "Courses", new { templateId = 2 }); });
-                      }))
+                      }).Events(e=>e.Select("selectCourse1")))
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.Course2, new { @class = "control-label col-xs-2" })
             <div class="col-xs-10">
-                @(Html.Kendo().DropDownList().Name("Course2").DataTextField("DisplayName").DataValueField("Id").HtmlAttributes(new { style = "width: 400px" }).DataSource(source =>
+                @(Html.Kendo().DropDownList().Name("Course2").DataTextField("DisplayName").DataValueField("Id").HtmlAttributes(new { style = "width: 500px" }).DataSource(source =>
                       {
                           source.Read(read =>
                               { read.Action("GetCourseDL", "Courses", new { templateId = 3 }).Data("filter"); }).ServerFiltering(true);
@@ -126,3 +126,9 @@
         </div>
     </div>
 }
+
+<script language="javascript">
+    function selectCourse1(e) {
+        var i = $("#Course1").val();
+    }
+</script>

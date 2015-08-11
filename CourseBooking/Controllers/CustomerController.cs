@@ -24,6 +24,14 @@ namespace CourseBooking.Controllers
             return View();
         }
 
+        public ActionResult Details(int customerId)
+        {
+            var customer = context.Customers.FirstOrDefault(c => c.Id == customerId);
+            var vm = new CustomerViewModel();
+            vm.ApplyCustomer(customer);
+            return this.View(vm);
+        }
+
         /// <summary>
         /// The get customers.
         /// </summary>
