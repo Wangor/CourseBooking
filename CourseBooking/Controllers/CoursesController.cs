@@ -24,6 +24,7 @@ namespace CourseBooking.Controllers
     /// <summary>
     /// The courses controller.
     /// </summary>
+    [Authorize]
     public class CoursesController : Controller
     {
         /// <summary>
@@ -110,6 +111,7 @@ namespace CourseBooking.Controllers
             return this.Json(courses.ToDataSourceResult(request),JsonRequestBehavior.AllowGet);
         }
 
+        [AllowAnonymous]
         public ActionResult GetCourseDL(int templateId, int previous = 0)
         {
           var result = new List<Course>();
@@ -189,8 +191,15 @@ namespace CourseBooking.Controllers
 
     public void SetInfo(Course course)
     {
+        var context = new CourseContext();
+        var template = context.CourseTemplates.FirstOrDefault(t => t.Id == course.CourseTemplateId);
+        int duration = 0;
+        if (template != null)
+        {
+            duration = template.NumberOfHours;
+        }
       Id = course.Id;
-      DisplayName = String.Format("{0} - {1} - {2}", course.Name, course.StartDateTime, course.Price);
+      DisplayName = String.Format("{0} - {1:g} bis {2:t} - {3} SFr.", course.Name, course.StartDateTime, course.StartDateTime.AddHours(duration), course.Price);
     }
   }
 }

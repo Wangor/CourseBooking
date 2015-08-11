@@ -59,6 +59,6 @@
             .DataSource(dataSource => dataSource
                 .Ajax()
                 .PageSize(20)
-                                        .Read(read => read.Action("GetCourseRegistrations", "Registration", new { registration = "#=Id#" }))
+                                        .Read(read => read.Action("GetCourseRegistrations", "CourseRegistration", new { registration = "#=Id#" }))
             ).ToClientTemplate())
 </script>
