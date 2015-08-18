@@ -138,6 +138,10 @@
         var c1 = $("#Course1").val();
         var c2 = $("#Course2").val();
 
+        if (c1 === "0" || c2 === "0") {
+            return;
+        }
+
         $.ajax({
             url: '@Url.Action("CalculateA1", "PriceCalculation")',
             type: 'POST',

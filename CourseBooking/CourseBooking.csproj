@@ -143,6 +143,7 @@
     <Reference Include="Telerik.Reporting, Version=9.1.15.624, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\Telerik.Reporting\v4.0_9.1.15.624__a9d7983dfcc261be\Telerik.Reporting.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
