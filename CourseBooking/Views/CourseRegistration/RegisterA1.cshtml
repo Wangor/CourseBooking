@@ -92,7 +92,7 @@
                       {
                           source.Read(read =>
                               { read.Action("GetCourseDL", "Courses", new { templateId = 2 }); });
-                      }).Events(e=>e.Select("selectCourse1")))
+                      }).Events(e => { e.DataBound("selectCourse"); e.Change("selectCourse"); }))
             </div>
         </div>
         <div class="form-group">
@@ -102,7 +102,7 @@
                       {
                           source.Read(read =>
                               { read.Action("GetCourseDL", "Courses", new { templateId = 3 }).Data("filter"); }).ServerFiltering(true);
-                      }).Enable(false).AutoBind(false).CascadeFrom("Course1")
+                      }).Enable(false).AutoBind(false).CascadeFrom("Course1").Events(e => { e.DataBound("selectCourse"); e.Change("selectCourse");})
                       )
                 <script>
                     function filter() {
@@ -121,6 +121,12 @@
                 @Html.ValidationMessageFor(model => model.Registration.Remark)
             </div>
         </div>
+        <div class="form-group">
+            Kursteil 1: <p id="course1"></p>
+            Kursteil 2: <p id="course2"></p>
+            Administrationsgebühren: <p id="tax"></p>
+            Gesamtkosten: <p id="total"></p>
+        </div>
         <div>
             <input type="submit" value="Anmelden" class="btn btn-primary"/>
         </div>
@@ -128,7 +134,29 @@
 }
 
 <script language="javascript">
-    function selectCourse1(e) {
-        var i = $("#Course1").val();
+    function selectCourse(e) {
+        var c1 = $("#Course1").val();
+        var c2 = $("#Course2").val();
+
+        $.ajax({
+            url: '@Url.Action("CalculateA1", "PriceCalculation")',
+            type: 'POST',
+            dataType: 'json',
+            cache: false,
+            data: {
+                course1: c1,
+                course2: c2
+            },
+            success: function (result) {
+                $("#tax").text(result.fee);
+                $("#course1").text(result.course1);
+                $("#course2").text(result.course2);
+                $("#total").text(result.total);
+                alert(result.fee);
+            },
+            error: function () {
+                alert("error");
+            }
+        });
     }
 </script>

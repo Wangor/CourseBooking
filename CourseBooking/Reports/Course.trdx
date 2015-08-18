@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSourceHeader" Width="16.9999986879031cm" Name="Course" xmlns="http://schemas.telerik.com/reporting/2012/3.8">
+  <DataSources>
+    <SqlDataSource ConnectionString="CourseConnection" SelectCommand="SELECT&#xD;&#xA;&#x9;[Course].[Id], &#xD;&#xA;&#x9;[Course].[Name], &#xD;&#xA;&#x9;[Course].[Remark], &#xD;&#xA;&#x9;[Course].[MessageField], &#xD;&#xA;&#x9;[Course].[StartDateTime], &#xD;&#xA;&#x9;[Course].[CourseTemplateId], &#xD;&#xA;&#x9;[Course].[LocationId], &#xD;&#xA;&#x9;[Course].[MaxParticipants], &#xD;&#xA;&#x9;[Course].[Price], &#xD;&#xA;&#x9;[CourseTemplate].[Id] AS 'CourseTemplateId1', &#xD;&#xA;&#x9;[CourseTemplate].[Name] AS 'CourseTemplateName', &#xD;&#xA;&#x9;[CourseTemplate].[NumberOfHours], &#xD;&#xA;&#x9;[CourseTemplate].[LocationId] AS 'CourseTemplateLocationId', &#xD;&#xA;&#x9;[CourseTemplate].[MaxParticipants] AS 'CourseTemplateMaxParticipants', &#xD;&#xA;&#x9;[CourseTemplate].[Price] AS 'CourseTemplatePrice'&#xD;&#xA;FROM ([Course]&#xD;&#xA; LEFT JOIN [CourseTemplate]&#xD;&#xA; ON [Course].[CourseTemplateId] = [CourseTemplate].[Id])&#xD;&#xA;WHERE [Course].[Id] = @CourseId" Name="sqlDataSourceHeader" ParameterValues="{&quot;@CourseId&quot;:&quot;1&quot;}" QueryDesignerState="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;DM xmlns:z=&quot;http://schemas.microsoft.com/2003/10/Serialization/&quot; xmlns:i=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;http://schemas.datacontract.org/2004/07/Telerik.Reporting.Design.QueryDesigner&quot;&gt;&lt;Es&gt;&lt;E z:Id=&quot;i1&quot;&gt;&lt;MBN&gt;Course&lt;/MBN&gt;&lt;MBP z:Id=&quot;i2&quot; i:type=&quot;Namespace&quot;&gt;&lt;MBN&gt;&lt;/MBN&gt;&lt;MOC&gt;&lt;MB z:Ref=&quot;i1&quot; /&gt;&lt;/MOC&gt;&lt;/MBP&gt;&lt;MOC&gt;&lt;MB z:Id=&quot;i3&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;Id&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i1&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i4&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;Name&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i1&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i5&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;Remark&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i1&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i6&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;MessageField&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i1&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i7&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;StartDateTime&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i1&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i8&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;CourseTemplateId&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i1&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i9&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;LocationId&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i1&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i10&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;MaxParticipants&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i1&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i11&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;Price&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i1&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;/MOC&gt;&lt;ER&gt;&lt;R z:Id=&quot;i12&quot;&gt;&lt;MBN&gt;&lt;/MBN&gt;&lt;RC&gt;&lt;_items&gt;&lt;C&gt;&lt;CCP z:Id=&quot;i13&quot;&gt;&lt;MBN&gt;Id&lt;/MBN&gt;&lt;MBP z:Id=&quot;i14&quot; i:type=&quot;E&quot;&gt;&lt;MBN&gt;CourseTemplate&lt;/MBN&gt;&lt;MBP z:Id=&quot;i15&quot; i:type=&quot;Namespace&quot;&gt;&lt;MBN&gt;&lt;/MBN&gt;&lt;MOC&gt;&lt;MB z:Ref=&quot;i14&quot; /&gt;&lt;/MOC&gt;&lt;/MBP&gt;&lt;MOC&gt;&lt;MB z:Ref=&quot;i13&quot; /&gt;&lt;MB z:Id=&quot;i16&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;Name&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i14&quot; /&gt;&lt;PA&gt;CourseTemplateName&lt;/PA&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i17&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;NumberOfHours&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i14&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i18&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;LocationId&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i14&quot; /&gt;&lt;PA&gt;CourseTemplateLocationId&lt;/PA&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i19&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;MaxParticipants&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i14&quot; /&gt;&lt;PA&gt;CourseTemplateMaxParticipants&lt;/PA&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i20&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;Price&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i14&quot; /&gt;&lt;PA&gt;CourseTemplatePrice&lt;/PA&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;/MOC&gt;&lt;ER&gt;&lt;R z:Ref=&quot;i12&quot; /&gt;&lt;/ER&gt;&lt;/MBP&gt;&lt;PA&gt;CourseTemplateId1&lt;/PA&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/CCP&gt;&lt;CPP z:Ref=&quot;i8&quot; /&gt;&lt;/C&gt;&lt;/_items&gt;&lt;_size&gt;1&lt;/_size&gt;&lt;_version&gt;2&lt;/_version&gt;&lt;/RC&gt;&lt;RCE z:Ref=&quot;i14&quot; /&gt;&lt;RJT&gt;Left&lt;/RJT&gt;&lt;RPE z:Ref=&quot;i1&quot; /&gt;&lt;/R&gt;&lt;/ER&gt;&lt;/E&gt;&lt;E z:Ref=&quot;i14&quot; /&gt;&lt;/Es&gt;&lt;Fs /&gt;&lt;Ps&gt;&lt;P z:Ref=&quot;i3&quot; /&gt;&lt;P z:Ref=&quot;i4&quot; /&gt;&lt;P z:Ref=&quot;i5&quot; /&gt;&lt;P z:Ref=&quot;i6&quot; /&gt;&lt;P z:Ref=&quot;i7&quot; /&gt;&lt;P z:Ref=&quot;i8&quot; /&gt;&lt;P z:Ref=&quot;i9&quot; /&gt;&lt;P z:Ref=&quot;i10&quot; /&gt;&lt;P z:Ref=&quot;i11&quot; /&gt;&lt;P z:Ref=&quot;i13&quot; /&gt;&lt;P z:Ref=&quot;i16&quot; /&gt;&lt;P z:Ref=&quot;i17&quot; /&gt;&lt;P z:Ref=&quot;i18&quot; /&gt;&lt;P z:Ref=&quot;i19&quot; /&gt;&lt;P z:Ref=&quot;i20&quot; /&gt;&lt;/Ps&gt;&lt;Rs&gt;&lt;R z:Ref=&quot;i12&quot; /&gt;&lt;/Rs&gt;&lt;/DM&gt;">
+      <Parameters>
+        <SqlDataSourceParameter DbType="Int32" Name="@CourseId">
+          <Value>
+            <String>1</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+    <SqlDataSource ConnectionString="CourseConnection" SelectCommand="SELECT&#xD;&#xA;&#x9;[Course].[Id], &#xD;&#xA;&#x9;[Course].[Name], &#xD;&#xA;&#x9;[Course].[Remark], &#xD;&#xA;&#x9;[Course].[MessageField], &#xD;&#xA;&#x9;[Course].[StartDateTime], &#xD;&#xA;&#x9;[Course].[CourseTemplateId], &#xD;&#xA;&#x9;[Course].[LocationId], &#xD;&#xA;&#x9;[Course].[MaxParticipants], &#xD;&#xA;&#x9;[Course].[Price], &#xD;&#xA;&#x9;[CourseRegistrations].[RegistrationId], &#xD;&#xA;&#x9;[CourseRegistrations].[Course_Id], &#xD;&#xA;&#x9;[Registrations].[Id] AS 'RegistrationsId', &#xD;&#xA;&#x9;[Registrations].[AddressLine], &#xD;&#xA;&#x9;[Registrations].[AddressLine2], &#xD;&#xA;&#x9;[Registrations].[City], &#xD;&#xA;&#x9;[Registrations].[Confirmed], &#xD;&#xA;&#x9;[Registrations].[CourseType], &#xD;&#xA;&#x9;[Registrations].[EMail], &#xD;&#xA;&#x9;[Registrations].[Name] AS 'RegistrationsName', &#xD;&#xA;&#x9;[Registrations].[Phone], &#xD;&#xA;&#x9;[Registrations].[PreName], &#xD;&#xA;&#x9;[Registrations].[Title], &#xD;&#xA;&#x9;[Registrations].[Zip], &#xD;&#xA;&#x9;[Registrations].[Birthdate], &#xD;&#xA;&#x9;[Registrations].[LfaEndDateTime], &#xD;&#xA;&#x9;[Registrations].[RegRefNr], &#xD;&#xA;&#x9;[Registrations].[Remark] AS 'RegistrationsRemark', &#xD;&#xA;&#x9;[Registrations].[RegistrationDateTime], &#xD;&#xA;&#x9;[Registrations].[AdditionalInfo], &#xD;&#xA;&#x9;[Registrations].[CustomerId]&#xD;&#xA;FROM (([CourseRegistrations]&#xD;&#xA; INNER JOIN [Registrations]&#xD;&#xA; ON [CourseRegistrations].[RegistrationId] = [Registrations].[Id])&#xD;&#xA; INNER JOIN [Course]&#xD;&#xA; ON [CourseRegistrations].[Course_Id] = [Course].[Id])&#xD;&#xA;WHERE [Course].[Id] = @CourseId" Name="sqlDataSource" ParameterValues="{&quot;@CourseId&quot;:&quot;1&quot;}" QueryDesignerState="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;DM xmlns:z=&quot;http://schemas.microsoft.com/2003/10/Serialization/&quot; xmlns:i=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;http://schemas.datacontract.org/2004/07/Telerik.Reporting.Design.QueryDesigner&quot;&gt;&lt;Es&gt;&lt;E z:Id=&quot;i1&quot;&gt;&lt;MBN&gt;Course&lt;/MBN&gt;&lt;MBP z:Id=&quot;i2&quot; i:type=&quot;Namespace&quot;&gt;&lt;MBN&gt;&lt;/MBN&gt;&lt;MOC&gt;&lt;MB z:Ref=&quot;i1&quot; /&gt;&lt;/MOC&gt;&lt;/MBP&gt;&lt;MOC&gt;&lt;MB z:Id=&quot;i3&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;Id&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i1&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i4&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;Name&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i1&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i5&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;Remark&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i1&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i6&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;MessageField&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i1&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i7&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;StartDateTime&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i1&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i8&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;CourseTemplateId&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i1&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i9&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;LocationId&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i1&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i10&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;MaxParticipants&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i1&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i11&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;Price&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i1&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;/MOC&gt;&lt;ER&gt;&lt;R z:Id=&quot;i12&quot;&gt;&lt;MBN&gt;&lt;/MBN&gt;&lt;RC&gt;&lt;_items&gt;&lt;C&gt;&lt;CCP z:Ref=&quot;i3&quot; /&gt;&lt;CPP z:Id=&quot;i13&quot;&gt;&lt;MBN&gt;Course_Id&lt;/MBN&gt;&lt;MBP z:Id=&quot;i14&quot; i:type=&quot;E&quot;&gt;&lt;MBN&gt;CourseRegistrations&lt;/MBN&gt;&lt;MBP z:Id=&quot;i15&quot; i:type=&quot;Namespace&quot;&gt;&lt;MBN&gt;&lt;/MBN&gt;&lt;MOC&gt;&lt;MB z:Ref=&quot;i14&quot; /&gt;&lt;/MOC&gt;&lt;/MBP&gt;&lt;MOC&gt;&lt;MB z:Ref=&quot;i13&quot; /&gt;&lt;MB z:Id=&quot;i16&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;RegistrationId&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i14&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;/MOC&gt;&lt;ER /&gt;&lt;/MBP&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/CPP&gt;&lt;/C&gt;&lt;/_items&gt;&lt;_size&gt;1&lt;/_size&gt;&lt;_version&gt;1&lt;/_version&gt;&lt;/RC&gt;&lt;RCE z:Ref=&quot;i1&quot; /&gt;&lt;RJT&gt;Inner&lt;/RJT&gt;&lt;RPE z:Ref=&quot;i14&quot; /&gt;&lt;/R&gt;&lt;/ER&gt;&lt;/E&gt;&lt;E z:Ref=&quot;i14&quot; /&gt;&lt;E z:Id=&quot;i17&quot;&gt;&lt;MBN&gt;Registrations&lt;/MBN&gt;&lt;MBP z:Id=&quot;i18&quot; i:type=&quot;Namespace&quot;&gt;&lt;MBN&gt;&lt;/MBN&gt;&lt;MOC&gt;&lt;MB z:Ref=&quot;i17&quot; /&gt;&lt;/MOC&gt;&lt;/MBP&gt;&lt;MOC&gt;&lt;MB z:Id=&quot;i19&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;Id&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i17&quot; /&gt;&lt;PA&gt;RegistrationsId&lt;/PA&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i20&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;AddressLine&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i17&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i21&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;AddressLine2&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i17&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i22&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;City&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i17&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i23&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;Confirmed&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i17&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i24&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;CourseType&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i17&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i25&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;EMail&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i17&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i26&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;Name&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i17&quot; /&gt;&lt;PA&gt;RegistrationsName&lt;/PA&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i27&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;Phone&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i17&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i28&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;PreName&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i17&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i29&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;Title&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i17&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i30&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;Zip&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i17&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i31&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;Birthdate&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i17&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i32&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;LfaEndDateTime&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i17&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i33&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;RegRefNr&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i17&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i34&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;Remark&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i17&quot; /&gt;&lt;PA&gt;RegistrationsRemark&lt;/PA&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i35&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;RegistrationDateTime&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i17&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i36&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;AdditionalInfo&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i17&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i37&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;CustomerId&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i17&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;/MOC&gt;&lt;ER&gt;&lt;R z:Id=&quot;i38&quot;&gt;&lt;MBN&gt;&lt;/MBN&gt;&lt;RC&gt;&lt;_items&gt;&lt;C&gt;&lt;CCP z:Ref=&quot;i19&quot; /&gt;&lt;CPP z:Ref=&quot;i16&quot; /&gt;&lt;/C&gt;&lt;/_items&gt;&lt;_size&gt;1&lt;/_size&gt;&lt;_version&gt;1&lt;/_version&gt;&lt;/RC&gt;&lt;RCE z:Ref=&quot;i17&quot; /&gt;&lt;RJT&gt;Inner&lt;/RJT&gt;&lt;RPE z:Ref=&quot;i14&quot; /&gt;&lt;/R&gt;&lt;/ER&gt;&lt;/E&gt;&lt;/Es&gt;&lt;Fs /&gt;&lt;Ps&gt;&lt;P z:Ref=&quot;i3&quot; /&gt;&lt;P z:Ref=&quot;i4&quot; /&gt;&lt;P z:Ref=&quot;i5&quot; /&gt;&lt;P z:Ref=&quot;i6&quot; /&gt;&lt;P z:Ref=&quot;i7&quot; /&gt;&lt;P z:Ref=&quot;i8&quot; /&gt;&lt;P z:Ref=&quot;i9&quot; /&gt;&lt;P z:Ref=&quot;i10&quot; /&gt;&lt;P z:Ref=&quot;i11&quot; /&gt;&lt;P z:Ref=&quot;i16&quot; /&gt;&lt;P z:Ref=&quot;i13&quot; /&gt;&lt;P z:Ref=&quot;i19&quot; /&gt;&lt;P z:Ref=&quot;i20&quot; /&gt;&lt;P z:Ref=&quot;i21&quot; /&gt;&lt;P z:Ref=&quot;i22&quot; /&gt;&lt;P z:Ref=&quot;i23&quot; /&gt;&lt;P z:Ref=&quot;i24&quot; /&gt;&lt;P z:Ref=&quot;i25&quot; /&gt;&lt;P z:Ref=&quot;i26&quot; /&gt;&lt;P z:Ref=&quot;i27&quot; /&gt;&lt;P z:Ref=&quot;i28&quot; /&gt;&lt;P z:Ref=&quot;i29&quot; /&gt;&lt;P z:Ref=&quot;i30&quot; /&gt;&lt;P z:Ref=&quot;i31&quot; /&gt;&lt;P z:Ref=&quot;i32&quot; /&gt;&lt;P z:Ref=&quot;i33&quot; /&gt;&lt;P z:Ref=&quot;i34&quot; /&gt;&lt;P z:Ref=&quot;i35&quot; /&gt;&lt;P z:Ref=&quot;i36&quot; /&gt;&lt;P z:Ref=&quot;i37&quot; /&gt;&lt;/Ps&gt;&lt;Rs&gt;&lt;R z:Ref=&quot;i12&quot; /&gt;&lt;R z:Ref=&quot;i38&quot; /&gt;&lt;/Rs&gt;&lt;/DM&gt;">
+      <Parameters>
+        <SqlDataSourceParameter DbType="Int32" Name="@CourseId">
+          <Value>
+            <String>1</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <PageHeaderSection Height="4.49999974767368cm" Name="pageHeaderSection1">
+      <Items>
+        <TextBox Width="13.499898110631cm" Height="1.00000010093053cm" Left="0.00010012308478013cm" Top="1.20000004768372cm" Value="= Fields.Name" Name="textBox15">
+          <Style>
+            <Font Size="18pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="5.69999954581262cm" Height="0.599700337259363cm" Left="3.00000010093053cm" Top="2.20019994337797cm" Value="= Fields.StartDateTime" Name="textBox16">
+          <Style>
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="3.00000010093053cm" Height="0.599700337259363cm" Left="0.00010012308478013cm" Top="2.20019994337797cm" Value="Beginn" Name="textBox17">
+          <Style>
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="3.00000010093053cm" Height="0.399799350108324cm" Left="0cm" Top="3.80000010093053cm" Value="Teilnehmer" Name="textBox18">
+          <Style>
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="3.00000010093053cm" Height="0.999999697208413cm" Left="0.00010012308478013cm" Top="0.199800252914429cm" Value="Teilnehmerliste" Name="textBox19" />
+      </Items>
+    </PageHeaderSection>
+    <DetailSection Height="5cm" Name="detailSection1">
+      <Items>
+        <Table DataSourceName="sqlDataSource" Width="16.9997937276647cm" Height="1.00000001642071cm" Left="0.00010012308478013cm" Top="0.00010012308478013cm" Name="table1" StyleName="Normal.TableNormal">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.42854206965925cm" Height="0.499999948605712cm" Left="0cm" Top="0cm" Value="= Fields.Name" Name="textBox8" StyleName="Normal.TableBody" />
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.42854206965925cm" Height="0.499999948605712cm" Left="0cm" Top="0cm" Value="= Fields.PreName" Name="textBox9" StyleName="Normal.TableBody" />
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.42854206965925cm" Height="0.499999948605712cm" Left="0cm" Top="0cm" Value="= Fields.City" Name="textBox10" StyleName="Normal.TableBody" />
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.42854206965925cm" Height="0.499999948605712cm" Left="0cm" Top="0cm" Value="= Format(&quot;{0:dd.MM.yyyy}&quot;,Fields.Birthdate.Date)" Name="textBox11" StyleName="Normal.TableBody" />
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="4" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.42854206965925cm" Height="0.499999948605712cm" Left="0cm" Top="0cm" Value="= Fields.Phone" Name="textBox12" StyleName="Normal.TableBody" />
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="5" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.42854206965925cm" Height="0.499999948605712cm" Left="0cm" Top="0cm" Value="= Fields.RegRefNr" Name="textBox13" StyleName="Normal.TableBody" />
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="6" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.42854206965925cm" Height="0.499999948605712cm" Left="0cm" Top="0cm" Value="= Format(&quot;{0:dd.MM.yyyy}&quot;,Fields.LfaEndDateTime.Date)" Name="textBox14" StyleName="Normal.TableBody" />
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="2.42854206965925cm" />
+              <Column Width="2.42854206965925cm" />
+              <Column Width="2.42854206965925cm" />
+              <Column Width="2.42854206965925cm" />
+              <Column Width="2.42854206965925cm" />
+              <Column Width="2.42854206965925cm" />
+              <Column Width="2.42854206965925cm" />
+            </Columns>
+            <Rows>
+              <Row Height="0.499999948605712cm" />
+            </Rows>
+          </Body>
+          <Corner />
+          <RowGroups>
+            <TableGroup Name="Detail">
+              <Groupings>
+                <Grouping />
+              </Groupings>
+            </TableGroup>
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Width="2.42854282960957cm" Height="0.5cm" Left="0cm" Top="0cm" Value="Name" Name="textBox1" StyleName="Normal.TableHeader">
+                  <Style BackgroundColor="242, 242, 242" />
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Width="2.42854282960957cm" Height="0.5cm" Left="0cm" Top="0cm" Value="Vorname" Name="textBox2" StyleName="Normal.TableHeader">
+                  <Style BackgroundColor="242, 242, 242" />
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Width="2.42854282960957cm" Height="0.5cm" Left="0cm" Top="0cm" Value="Ort" Name="textBox3" StyleName="Normal.TableHeader">
+                  <Style BackgroundColor="242, 242, 242" />
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Width="2.42854282960957cm" Height="0.5cm" Left="0cm" Top="0cm" Value="Geburtsdatum" Name="textBox4" StyleName="Normal.TableHeader">
+                  <Style BackgroundColor="242, 242, 242" />
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Width="2.42854282960957cm" Height="0.5cm" Left="0cm" Top="0cm" Value="Tel" Name="textBox5" StyleName="Normal.TableHeader">
+                  <Style BackgroundColor="242, 242, 242" />
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Width="2.42854282960957cm" Height="0.5cm" Left="0cm" Top="0cm" Value="Reg Ref Nr" Name="textBox6" StyleName="Normal.TableHeader">
+                  <Style BackgroundColor="242, 242, 242" />
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Width="2.42854282960957cm" Height="0.5cm" Left="0cm" Top="0cm" Value="LFA Ablauf" Name="textBox7" StyleName="Normal.TableHeader">
+                  <Style BackgroundColor="242, 242, 242" />
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+          </ColumnGroups>
+        </Table>
+      </Items>
+    </DetailSection>
+    <PageFooterSection Height="2cm" Name="pageFooterSection1" />
+  </Items>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style Color="Black">
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+        <Font Name="Tahoma" Size="9pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="Table" StyleName="Normal.TableNormal" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style>
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+        <Font Name="Tahoma" Size="9pt" />
+      </Style>
+      <Selectors>
+        <DescendantSelector>
+          <Selectors>
+            <TypeSelector Type="Table" />
+            <StyleSelector Type="ReportItem" StyleName="Normal.TableBody" />
+          </Selectors>
+        </DescendantSelector>
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style VerticalAlign="Middle">
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+        <Font Name="Tahoma" Size="10pt" />
+      </Style>
+      <Selectors>
+        <DescendantSelector>
+          <Selectors>
+            <TypeSelector Type="Table" />
+            <StyleSelector Type="ReportItem" StyleName="Normal.TableHeader" />
+          </Selectors>
+        </DescendantSelector>
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <PageSettings>
+    <PageSettings PaperKind="A4" Landscape="False" ColumnCount="1" ColumnSpacing="0cm">
+      <Margins>
+        <MarginsU Left="2cm" Right="2cm" Top="2cm" Bottom="2cm" />
+      </Margins>
+    </PageSettings>
+  </PageSettings>
+</Report>

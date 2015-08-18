@@ -140,6 +140,10 @@
       <Private>True</Private>
       <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Telerik.Reporting, Version=9.1.15.624, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\Telerik.Reporting\v4.0_9.1.15.624__a9d7983dfcc261be\Telerik.Reporting.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -193,7 +197,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\CourseRegistrationController.cs" />
+    <Compile Include="Controllers\PriceCalculationController.cs" />
     <Compile Include="Controllers\RegistrationsController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Migrations\201508042029381_init.cs" />
     <Compile Include="Migrations\201508042029381_init.Designer.cs">
       <DependentUpon>201508042029381_init.cs</DependentUpon>
@@ -219,6 +225,7 @@
     <Compile Include="QueryServices\PersonQueryService.cs" />
     <Compile Include="Models\Registration.cs" />
     <Compile Include="Services\MailService.cs" />
+    <Compile Include="Services\ReportHelper.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AssignRegistrationViewModel.cs" />
     <Compile Include="ViewModels\BookingViewModel.cs" />
@@ -562,6 +569,9 @@
     <Content Include="Content\kendo\2015.1.429\fonts\DejaVu\DejaVuSerif.ttf" />
     <Content Include="Content\kendo\2015.1.429\images\kendoui.ttf" />
     <Content Include="Content\kendo\2015.1.429\images\kendoui.woff" />
+    <Resource Include="Reports\Course.trdx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1305,6 +1315,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\PriceCalculation\" />
+    <Folder Include="Views\Report\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
