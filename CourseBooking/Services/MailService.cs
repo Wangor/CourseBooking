@@ -87,7 +87,7 @@ namespace CourseBooking.Services
                 if (registration.Courses.Count == 1)
                 {
                     var course = registration.Courses.ElementAt(0);
-                    myMessage.Text = string.Format("Für den Kurs {0} am {1}", course.Name, course.StartDateTime);
+                    myMessage.Text = string.Format("Für den Kurs {0} am {1}\n", course.Name, course.StartDateTime);
                 }
 
                 if (registration.Courses.Count > 1)
@@ -96,7 +96,7 @@ namespace CourseBooking.Services
                     sb.AppendLine("Für die Kurse:");
                     foreach (var course in registration.Courses)
                     {
-                        sb.AppendLine(string.Format("Für den Kurs {0} am {1}", course.Name, course.StartDateTime));
+                        sb.AppendLine(string.Format("Für den Kurs {0} am {1}\n", course.Name, course.StartDateTime));
 
                         myMessage.Text = sb.ToString();
                     }
@@ -127,18 +127,18 @@ namespace CourseBooking.Services
                 myMessage.AddTo("matt@matt-b.ch");
                 myMessage.AddTo("gerry.gruetter@gmx.ch");
                 myMessage.From = new MailAddress("gerry.gruetter@gmx.ch", "Fahrschule Grütter-Stooss");
-                myMessage.Subject = string.Format("Anmeldung erhalten von {0} {1}", registration.Name, registration.PreName);
+                myMessage.Subject = string.Format("Anmeldung erhalten von {0} {1}\n", registration.Name, registration.PreName);
 
                 if (registration.Courses.Count == 1)
                 {
                     var sb = new StringBuilder();
-                    sb.AppendLine(string.Format("{0} {1}", registration.Name, registration.PreName));
-                    sb.AppendLine(string.Format("{0}", registration.AddressLine));
-                    sb.AppendLine(string.Format("{0} {1}", registration.Zip, registration.City));
-                    sb.AppendLine(string.Format("{0}", registration.Phone));
+                    sb.AppendLine(string.Format("{0} {1}\n", registration.Name, registration.PreName));
+                    sb.AppendLine(string.Format("{0}\n", registration.AddressLine));
+                    sb.AppendLine(string.Format("{0} {1}\n", registration.Zip, registration.City));
+                    sb.AppendLine(string.Format("{0}\n", registration.Phone));
 
                     var course = registration.Courses.ElementAt(0);
-                    sb.AppendLine(string.Format("Für den Kurs {0} am {1}", course.Name, course.StartDateTime));
+                    sb.AppendLine(string.Format("Für den Kurs {0} am {1}\n", course.Name, course.StartDateTime));
                     
                     myMessage.Text = sb.ToString();
                 }
@@ -146,15 +146,15 @@ namespace CourseBooking.Services
                 if (registration.Courses.Count > 1)
                 {
                     var sb = new StringBuilder();
-                    sb.AppendLine(string.Format("{0} {1}", registration.Name, registration.PreName));
-                    sb.AppendLine(string.Format("{0}", registration.AddressLine));
-                    sb.AppendLine(string.Format("{0} {1}", registration.Zip, registration.City));
-                    sb.AppendLine(string.Format("{0}", registration.Phone));
+                    sb.AppendLine(string.Format("{0} {1}\n", registration.Name, registration.PreName));
+                    sb.AppendLine(string.Format("{0}\n", registration.AddressLine));
+                    sb.AppendLine(string.Format("{0} {1}\n", registration.Zip, registration.City));
+                    sb.AppendLine(string.Format("{0}\n", registration.Phone));
 
-                    sb.AppendLine("Für die Kurse:");
+                    sb.AppendLine("Für die Kurse:\n");
                     foreach (var course in registration.Courses)
                     {
-                        sb.AppendLine(string.Format("Für den Kurs {0} am {1}", course.Name, course.StartDateTime));
+                        sb.AppendLine(string.Format("Für den Kurs {0} am {1}\n", course.Name, course.StartDateTime));
 
                         myMessage.Text = sb.ToString();
                     }
