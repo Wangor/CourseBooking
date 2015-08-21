@@ -573,6 +573,8 @@
     <Resource Include="Reports\Course.trdx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Content Include="Reports\ConfirmVKU.trdx" />
+    <Content Include="Reports\ConfirmMoto.trdx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

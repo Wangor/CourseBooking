@@ -7,7 +7,10 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using Telerik.Reporting;
 
 namespace CourseBooking.Services
 {
@@ -19,7 +22,7 @@ namespace CourseBooking.Services
 
     public class MailService
     {
-        public static void ConfirmRegistration(int registrationId)
+        public static void ConfirmRegistration(int registrationId, string reportpath)
         {
             var context = new CourseContext();
             var registration = context.Registrations.Include("Courses").FirstOrDefault(r => r.Id == registrationId);
@@ -29,7 +32,16 @@ namespace CourseBooking.Services
 
                 var myMessage = new SendGridMessage();
                 myMessage.AddTo(registration.EMail);
+                myMessage.AddTo("matt@matt-b.ch");
                 myMessage.From = new MailAddress("gerry.gruetter@gmx.ch", "Fahrschule Grütter-Stooss");
+                var stream = new MemoryStream();
+                var report = ReportHelper.GetReportFromFile(reportpath);
+                report.ReportParameters["RegistrationId"].Value = registrationId;
+                var reportProcessor = new Telerik.Reporting.Processing.ReportProcessor();
+                var renderingResult = reportProcessor.RenderReport("PDF", report, null);
+                stream.Write(renderingResult.DocumentBytes, 0, renderingResult.DocumentBytes.Length);
+                stream.Position = 0;
+                myMessage.AddAttachment(stream, "Anmeldung.pdf");
                 myMessage.Subject = "Bestätigung Deiner Anmeldung";
 
                 if (registration.Courses.Count == 1)

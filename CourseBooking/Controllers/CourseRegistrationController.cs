@@ -92,13 +92,13 @@ namespace CourseBooking.Controllers
     [Authorize]
     public ActionResult Confirm(int id)
     {
-      Registration registration = this.context.Registrations.FirstOrDefault(r => r.Id == id);
+      var registration = this.context.Registrations.FirstOrDefault(r => r.Id == id);
       if (registration != null)
       {
         registration.Confirmed = true;
         try
         {
-            MailService.ConfirmRegistration(id);
+            MailService.ConfirmRegistration(id, Server.MapPath(@"~\Reports\ConfirmMoto.trdx"));
           this.context.SaveChanges();
         }
         catch (Exception exception)
@@ -222,6 +222,7 @@ namespace CourseBooking.Controllers
 
       registration.Courses.Add(this.context.Courses.FirstOrDefault(c => c.Id == vm.Course1));
       registration.Courses.Add(this.context.Courses.FirstOrDefault(c => c.Id == vm.Course2));
+      registration.Courses.Add(this.context.Courses.FirstOrDefault(c => c.Id == vm.Course3));
         registration.RegistrationDateTime = DateTime.Now;
       this.context.Registrations.Add(registration);
       this.context.SaveChanges();

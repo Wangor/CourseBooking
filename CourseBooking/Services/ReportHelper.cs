@@ -1,4 +1,6 @@
-﻿namespace CourseBooking.Services
+﻿using System.Collections.Generic;
+
+namespace CourseBooking.Services
 {
     using System;
     using Telerik.Reporting;

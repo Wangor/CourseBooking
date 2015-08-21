@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSourceHeader" Width="16.9999986879031cm" Name="ConfirmVKU" xmlns="http://schemas.telerik.com/reporting/2012/3.8">
+  <DataSources>
+    <SqlDataSource ConnectionString="CourseConnection" SelectCommand="SELECT&#xD;&#xA;&#x9;[Registrations].[Name], &#xD;&#xA;&#x9;[Registrations].[PreName], &#xD;&#xA;&#x9;[Registrations].[AddressLine], &#xD;&#xA;&#x9;[Registrations].[Zip], &#xD;&#xA;&#x9;[Registrations].[City]&#xD;&#xA;FROM [Registrations]&#xD;&#xA;WHERE&#xD;&#xA;[Registrations].[Id] = @RegistrationId" Name="sqlDataSourceHeader" ParameterValues="{&quot;@RegistrationId&quot;:&quot;1&quot;}" QueryDesignerState="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;DM xmlns:z=&quot;http://schemas.microsoft.com/2003/10/Serialization/&quot; xmlns:i=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;http://schemas.datacontract.org/2004/07/Telerik.Reporting.Design.QueryDesigner&quot;&gt;&lt;Es&gt;&lt;E z:Id=&quot;i1&quot;&gt;&lt;MBN&gt;Registrations&lt;/MBN&gt;&lt;MBP z:Id=&quot;i2&quot; i:type=&quot;Namespace&quot;&gt;&lt;MBN&gt;&lt;/MBN&gt;&lt;MOC&gt;&lt;MB z:Ref=&quot;i1&quot; /&gt;&lt;/MOC&gt;&lt;/MBP&gt;&lt;MOC&gt;&lt;MB z:Id=&quot;i3&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;Name&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i1&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i4&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;AddressLine&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i1&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i5&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;Zip&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i1&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i6&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;City&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i1&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;/MOC&gt;&lt;ER /&gt;&lt;/E&gt;&lt;/Es&gt;&lt;Fs /&gt;&lt;Ps&gt;&lt;P z:Ref=&quot;i3&quot; /&gt;&lt;P z:Ref=&quot;i4&quot; /&gt;&lt;P z:Ref=&quot;i5&quot; /&gt;&lt;P z:Ref=&quot;i6&quot; /&gt;&lt;/Ps&gt;&lt;Rs /&gt;&lt;/DM&gt;">
+      <Parameters>
+        <SqlDataSourceParameter DbType="Int32" Name="@RegistrationId">
+          <Value>
+            <String>= Parameters.RegistrationId.Value</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+    <SqlDataSource ConnectionString="CourseConnection" SelectCommand="SELECT&#xD;&#xA;&#x9;[CourseRegistrations].[RegistrationId], &#xD;&#xA;&#x9;[CourseRegistrations].[Course_Id], &#xD;&#xA;&#x9;[Course].[Name] AS 'CourseName', &#xD;&#xA;&#x9;[Course].[Price], &#xD;&#xA;&#x9;[Location].[Name] AS 'LocationName', &#xD;&#xA;&#x9;[Location].[Street], &#xD;&#xA;&#x9;[Location].[Zip] AS 'LocationZip', &#xD;&#xA;&#x9;[Location].[City] AS 'LocationCity', &#xD;&#xA;&#x9;[CourseTemplate].[NumberOfHours], &#xD;&#xA;&#x9;[Course].[StartDateTime]&#xD;&#xA;FROM ((([CourseRegistrations]&#xD;&#xA; INNER JOIN [Course]&#xD;&#xA; ON [CourseRegistrations].[Course_Id] = [Course].[Id])&#xD;&#xA; INNER JOIN [Location]&#xD;&#xA; ON [Course].[LocationId] = [Location].[Id] AND [Course].[LocationId] = [Location].[Id])&#xD;&#xA; INNER JOIN [CourseTemplate]&#xD;&#xA; ON [Course].[CourseTemplateId] = [CourseTemplate].[Id] AND [Course].[CourseTemplateId] = [CourseTemplate].[Id])&#xD;&#xA;WHERE [CourseRegistrations].[RegistrationId] = @RegistrationId" Name="sqlDataSource" ParameterValues="{&quot;@RegistrationId&quot;:&quot;1&quot;}" QueryDesignerState="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;DM xmlns:z=&quot;http://schemas.microsoft.com/2003/10/Serialization/&quot; xmlns:i=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;http://schemas.datacontract.org/2004/07/Telerik.Reporting.Design.QueryDesigner&quot;&gt;&lt;Es&gt;&lt;E z:Id=&quot;i1&quot;&gt;&lt;MBN&gt;CourseRegistrations&lt;/MBN&gt;&lt;MBP z:Id=&quot;i2&quot; i:type=&quot;Namespace&quot;&gt;&lt;MBN&gt;&lt;/MBN&gt;&lt;MOC&gt;&lt;MB z:Ref=&quot;i1&quot; /&gt;&lt;/MOC&gt;&lt;/MBP&gt;&lt;MOC&gt;&lt;MB z:Id=&quot;i3&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;RegistrationId&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i1&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i4&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;Course_Id&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i1&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;/MOC&gt;&lt;ER /&gt;&lt;/E&gt;&lt;E z:Id=&quot;i5&quot;&gt;&lt;MBN&gt;Course&lt;/MBN&gt;&lt;MBP z:Id=&quot;i6&quot; i:type=&quot;Namespace&quot;&gt;&lt;MBN&gt;&lt;/MBN&gt;&lt;MOC&gt;&lt;MB z:Ref=&quot;i5&quot; /&gt;&lt;/MOC&gt;&lt;/MBP&gt;&lt;MOC&gt;&lt;MB z:Id=&quot;i7&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;Id&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i5&quot; /&gt;&lt;PA&gt;CourseId&lt;/PA&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i8&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;Name&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i5&quot; /&gt;&lt;PA&gt;CourseName&lt;/PA&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i9&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;Price&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i5&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i10&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;LocationId&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i5&quot; /&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i11&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;CourseTemplateId&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i5&quot; /&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i12&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;StartDateTime&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i5&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;/MOC&gt;&lt;ER&gt;&lt;R z:Id=&quot;i13&quot;&gt;&lt;MBN&gt;&lt;/MBN&gt;&lt;RC&gt;&lt;_items&gt;&lt;C&gt;&lt;CCP z:Ref=&quot;i7&quot; /&gt;&lt;CPP z:Ref=&quot;i4&quot; /&gt;&lt;/C&gt;&lt;/_items&gt;&lt;_size&gt;1&lt;/_size&gt;&lt;_version&gt;1&lt;/_version&gt;&lt;/RC&gt;&lt;RCE z:Ref=&quot;i5&quot; /&gt;&lt;RJT&gt;Inner&lt;/RJT&gt;&lt;RPE z:Ref=&quot;i1&quot; /&gt;&lt;/R&gt;&lt;/ER&gt;&lt;/E&gt;&lt;E z:Id=&quot;i14&quot;&gt;&lt;MBN&gt;Location&lt;/MBN&gt;&lt;MBP z:Id=&quot;i15&quot; i:type=&quot;Namespace&quot;&gt;&lt;MBN&gt;&lt;/MBN&gt;&lt;MOC&gt;&lt;MB z:Ref=&quot;i14&quot; /&gt;&lt;/MOC&gt;&lt;/MBP&gt;&lt;MOC&gt;&lt;MB z:Id=&quot;i16&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;Name&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i14&quot; /&gt;&lt;PA&gt;LocationName&lt;/PA&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i17&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;Street&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i14&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i18&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;Zip&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i14&quot; /&gt;&lt;PA&gt;LocationZip&lt;/PA&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i19&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;City&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i14&quot; /&gt;&lt;PA&gt;LocationCity&lt;/PA&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i20&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;Id&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i14&quot; /&gt;&lt;PA&gt;LocationId&lt;/PA&gt;&lt;/MB&gt;&lt;/MOC&gt;&lt;ER&gt;&lt;R z:Id=&quot;i21&quot;&gt;&lt;MBN&gt;&lt;/MBN&gt;&lt;RC&gt;&lt;_items&gt;&lt;C&gt;&lt;CCP z:Ref=&quot;i20&quot; /&gt;&lt;CPP z:Ref=&quot;i10&quot; /&gt;&lt;/C&gt;&lt;/_items&gt;&lt;_size&gt;1&lt;/_size&gt;&lt;_version&gt;2&lt;/_version&gt;&lt;/RC&gt;&lt;RCE z:Ref=&quot;i14&quot; /&gt;&lt;RJT&gt;Inner&lt;/RJT&gt;&lt;RPE z:Ref=&quot;i5&quot; /&gt;&lt;/R&gt;&lt;R z:Ref=&quot;i21&quot; /&gt;&lt;/ER&gt;&lt;/E&gt;&lt;E z:Id=&quot;i22&quot;&gt;&lt;MBN&gt;CourseTemplate&lt;/MBN&gt;&lt;MBP z:Id=&quot;i23&quot; i:type=&quot;Namespace&quot;&gt;&lt;MBN&gt;&lt;/MBN&gt;&lt;MOC&gt;&lt;MB z:Ref=&quot;i22&quot; /&gt;&lt;/MOC&gt;&lt;/MBP&gt;&lt;MOC&gt;&lt;MB z:Id=&quot;i24&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;NumberOfHours&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i22&quot; /&gt;&lt;PO&gt;true&lt;/PO&gt;&lt;/MB&gt;&lt;MB z:Id=&quot;i25&quot; i:type=&quot;P&quot;&gt;&lt;MBN&gt;Id&lt;/MBN&gt;&lt;MBP z:Ref=&quot;i22&quot; /&gt;&lt;PA&gt;CourseTemplateId&lt;/PA&gt;&lt;/MB&gt;&lt;/MOC&gt;&lt;ER&gt;&lt;R z:Id=&quot;i26&quot;&gt;&lt;MBN&gt;&lt;/MBN&gt;&lt;RC&gt;&lt;_items&gt;&lt;C&gt;&lt;CCP z:Ref=&quot;i25&quot; /&gt;&lt;CPP z:Ref=&quot;i11&quot; /&gt;&lt;/C&gt;&lt;/_items&gt;&lt;_size&gt;1&lt;/_size&gt;&lt;_version&gt;2&lt;/_version&gt;&lt;/RC&gt;&lt;RCE z:Ref=&quot;i22&quot; /&gt;&lt;RJT&gt;Inner&lt;/RJT&gt;&lt;RPE z:Ref=&quot;i5&quot; /&gt;&lt;/R&gt;&lt;R z:Ref=&quot;i26&quot; /&gt;&lt;/ER&gt;&lt;/E&gt;&lt;/Es&gt;&lt;Fs /&gt;&lt;Ps&gt;&lt;P z:Ref=&quot;i3&quot; /&gt;&lt;P z:Ref=&quot;i4&quot; /&gt;&lt;P z:Ref=&quot;i8&quot; /&gt;&lt;P z:Ref=&quot;i9&quot; /&gt;&lt;P z:Ref=&quot;i16&quot; /&gt;&lt;P z:Ref=&quot;i17&quot; /&gt;&lt;P z:Ref=&quot;i18&quot; /&gt;&lt;P z:Ref=&quot;i19&quot; /&gt;&lt;P z:Ref=&quot;i24&quot; /&gt;&lt;P z:Ref=&quot;i12&quot; /&gt;&lt;/Ps&gt;&lt;Rs&gt;&lt;R z:Ref=&quot;i13&quot; /&gt;&lt;R z:Ref=&quot;i21&quot; /&gt;&lt;R z:Ref=&quot;i26&quot; /&gt;&lt;/Rs&gt;&lt;/DM&gt;">
+      <Parameters>
+        <SqlDataSourceParameter DbType="Int32" Name="@RegistrationId">
+          <Value>
+            <String>= Parameters.RegistrationId.Value</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <PageHeaderSection Height="8.59999969720841cm" Name="pageHeaderSection1">
+      <Items>
+        <PictureBox Value="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" Width="10.3998994731931cm" Height="3.29989982644996cm" Left="0.00010012308478036cm" Top="0cm" MimeType="image/gif" Name="pictureBox1" />
+        <TextBox Width="7.24987461905033cm" Height="2.30000045418738cm" Left="9.75002394576801cm" Top="3.90000005046526cm" Value="= Fields.Name  + &quot; &quot; + Fields.PreName + &quot;&#xD;&#xA;&quot; + Fields.AddressLine + &quot;&#xD;&#xA;&quot; + Fields.Zip + &quot; &quot; + Fields.City&#xD;&#xA;" Name="textBox9" />
+        <TextBox Width="15.1999987888337cm" Height="0.999999899069471cm" Left="0.00010012308478013cm" Top="7.19999959627788cm" Value="Herzlichen Dank für Deine Anmeldung!  Hiermit bestätigen wir Dir den Kurs wie folgt:" Name="textBox1" />
+        <TextBox Width="6.09999974767368cm" Height="0.500000151395794cm" Left="0.00010012308478013cm" Top="6.49999954581262cm" Value="Anmeldungsbestätigung" Name="textBox19">
+          <Style>
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageHeaderSection>
+    <DetailSection Height="5cm" Name="detailSection1">
+      <Items>
+        <Table DataSourceName="sqlDataSource" Width="16.9998985648183cm" Height="3cm" Left="0.00010012308477947cm" Top="0.299999848604206cm" Name="table1" StyleName="Normal.TableNormal">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="4.24997464120459cm" Height="0.5cm" Left="0cm" Top="0cm" Value="= Fields.CourseName" Name="textBox5" StyleName="Normal.TableBody">
+                    <Style>
+                      <BorderStyle Default="None" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="4.24997464120459cm" Height="0.5cm" Left="0cm" Top="0cm" Value="= Fields.StartDateTime" Name="textBox6" StyleName="Normal.TableBody">
+                    <Style>
+                      <BorderStyle Default="None" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="4.24997464120459cm" Height="0.5cm" Left="0cm" Top="0cm" Value="= Fields.LocationName" Name="textBox7" StyleName="Normal.TableBody">
+                    <Style>
+                      <BorderStyle Default="None" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="4.24997464120459cm" Height="0.5cm" Left="0cm" Top="0cm" Value="= Fields.Price + &quot; CHF&quot;" Name="textBox8" StyleName="Normal.TableBody">
+                    <Style TextAlign="Right">
+                      <BorderStyle Default="None" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="4.24997464120459cm" Height="1cm" Left="0cm" Top="0cm" Name="textBox10" StyleName="Normal.TableBody">
+                    <Style>
+                      <BorderStyle Default="None" />
+                      <Font Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="4.24997464120459cm" Height="1cm" Left="0cm" Top="0cm" Name="textBox11" StyleName="Normal.TableBody">
+                    <Style>
+                      <BorderStyle Default="None" />
+                      <Font Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="4.24997464120459cm" Height="1cm" Left="0cm" Top="0cm" Value="Total" Name="textBox12" StyleName="Normal.TableBody">
+                    <Style>
+                      <BorderStyle Default="None" />
+                      <Font Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="4.24997464120459cm" Height="1cm" Left="0cm" Top="0cm" Value="= (Sum(CInt(Fields.Price)) + 50) + &quot; CHF&quot;" Name="textBox13" StyleName="Normal.TableBody">
+                    <Style TextAlign="Right">
+                      <BorderStyle Default="None" />
+                      <Font Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="4.24997464120459cm" Height="1cm" Left="0cm" Top="0cm" Name="textBox14" StyleName="Normal.TableBody">
+                    <Style>
+                      <BorderStyle Default="None" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="4.24997464120459cm" Height="1cm" Left="0cm" Top="0cm" Name="textBox15" StyleName="Normal.TableBody">
+                    <Style>
+                      <BorderStyle Default="None" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="4.24997464120459cm" Height="1cm" Left="0cm" Top="0cm" Value="Administrationskosten" Name="textBox16" StyleName="Normal.TableBody">
+                    <Style>
+                      <BorderStyle Default="None" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="4.24997464120459cm" Height="1cm" Left="0cm" Top="0cm" Value="50 CHF" Name="textBox17" StyleName="Normal.TableBody">
+                    <Style TextAlign="Right">
+                      <BorderStyle Default="None" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="4.24997464120459cm" />
+              <Column Width="4.24997464120459cm" />
+              <Column Width="4.24997464120459cm" />
+              <Column Width="4.24997464120459cm" />
+            </Columns>
+            <Rows>
+              <Row Height="0.499999970197678cm" />
+              <Row Height="0.999999940395355cm" />
+              <Row Height="0.999999940395355cm" />
+            </Rows>
+          </Body>
+          <Corner />
+          <Style>
+            <BorderStyle Default="None" />
+          </Style>
+          <RowGroups>
+            <TableGroup Name="Detail">
+              <Groupings>
+                <Grouping />
+              </Groupings>
+            </TableGroup>
+            <TableGroup Name="group1" />
+            <TableGroup Name="group" />
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Width="4.24997464120459cm" Height="0.5cm" Left="8.49990002831101cm" Top="1.50000045418738cm" Value="Kurs" Name="textBox18" StyleName="Normal.TableHeader">
+                  <Style>
+                    <BorderStyle Default="None" />
+                    <Font Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Width="4.24997464120459cm" Height="0.5cm" Left="0cm" Top="0cm" Value="Beginn" Name="textBox2" StyleName="Normal.TableHeader">
+                  <Style>
+                    <BorderStyle Default="None" />
+                    <Font Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Width="4.24997464120459cm" Height="0.5cm" Left="0cm" Top="0cm" Value="Ort" Name="textBox3" StyleName="Normal.TableHeader">
+                  <Style>
+                    <BorderStyle Default="None" />
+                    <Font Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Width="4.24997464120459cm" Height="0.5cm" Left="0cm" Top="0cm" Value="Kosten" Name="textBox4" StyleName="Normal.TableHeader">
+                  <Style>
+                    <BorderStyle Default="None" />
+                    <Font Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+          </ColumnGroups>
+        </Table>
+      </Items>
+    </DetailSection>
+    <PageFooterSection Height="2cm" Name="pageFooterSection1" />
+  </Items>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style Color="Black">
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+        <Font Name="Tahoma" Size="9pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="Table" StyleName="Normal.TableNormal" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style>
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+        <Font Name="Tahoma" Size="9pt" />
+      </Style>
+      <Selectors>
+        <DescendantSelector>
+          <Selectors>
+            <TypeSelector Type="Table" />
+            <StyleSelector Type="ReportItem" StyleName="Normal.TableBody" />
+          </Selectors>
+        </DescendantSelector>
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style VerticalAlign="Middle">
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+        <Font Name="Tahoma" Size="10pt" />
+      </Style>
+      <Selectors>
+        <DescendantSelector>
+          <Selectors>
+            <TypeSelector Type="Table" />
+            <StyleSelector Type="ReportItem" StyleName="Normal.TableHeader" />
+          </Selectors>
+        </DescendantSelector>
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <PageSettings>
+    <PageSettings PaperKind="A4" Landscape="False" ColumnCount="1" ColumnSpacing="0cm">
+      <Margins>
+        <MarginsU Left="2cm" Right="2cm" Top="2cm" Bottom="2cm" />
+      </Margins>
+    </PageSettings>
+  </PageSettings>
+  <ReportParameters>
+    <ReportParameter Name="RegistrationId" Type="Integer" Text="RegistrationId">
+      <Value>
+        <String>2</String>
+      </Value>
+    </ReportParameter>
+  </ReportParameters>
+</Report>
