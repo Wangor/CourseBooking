@@ -98,8 +98,15 @@ namespace CourseBooking.Controllers
         registration.Confirmed = true;
         try
         {
-            MailService.ConfirmRegistration(id, Server.MapPath(@"~\Reports\ConfirmMoto.trdx"));
-          this.context.SaveChanges();
+            if (registration.CourseType != "VKU")
+            {
+                MailService.ConfirmRegistration(id, Server.MapPath(@"~\Reports\ConfirmMoto.trdx"));
+            }
+            else
+            {
+                MailService.ConfirmRegistration(id, Server.MapPath(@"~\Reports\ConfirmVku.trdx"));
+            }
+            this.context.SaveChanges();
         }
         catch (Exception exception)
         {
