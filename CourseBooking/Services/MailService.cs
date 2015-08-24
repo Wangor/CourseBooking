@@ -139,7 +139,7 @@ namespace CourseBooking.Services
                 myMessage.AddTo("matt@matt-b.ch");
                 myMessage.AddTo("gerry.gruetter@gmx.ch");
                 myMessage.From = new MailAddress("gerry.gruetter@gmx.ch", "Fahrschule Grütter-Stooss");
-                myMessage.Subject = string.Format("Anmeldung erhalten von {0} {1}\n", registration.Name, registration.PreName);
+                myMessage.Subject = string.Format("Anmeldung erhalten von {0} {1}", registration.Name, registration.PreName);
 
                 if (registration.Courses.Count == 1)
                 {
