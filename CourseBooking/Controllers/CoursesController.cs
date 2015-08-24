@@ -139,7 +139,7 @@ namespace CourseBooking.Controllers
         {
             if (course != null && ModelState.IsValid)
             {
-                course.StartDateTime = course.StartDateTime.ToLocalTime();
+                course.StartDateTime = course.StartDateTime.ToUniversalTime();
                 this.context.Courses.Add(course);
                 this.context.SaveChanges();
             }
