@@ -7,20 +7,24 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-using CourseBooking.Models;
-
 namespace CourseBooking.ViewModels
 {
+    using System;
+    using Models;
+
     /// <summary>
     ///     The registration view model.
     /// </summary>
     public class RegistrationsViewModel
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RegistrationsViewModel"/> class.
+        /// </summary>
         public RegistrationsViewModel()
         {
             
         }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="RegistrationsViewModel"/> class.
         /// </summary>
@@ -37,6 +41,8 @@ namespace CourseBooking.ViewModels
             this.IsAssigned = registration.Customer != null;
             this.Confirmed = registration.Confirmed;
             this.RegistrationDateTime = registration.RegistrationDateTime;
+            this.Phone = registration.Phone;
+            this.EMail = registration.EMail;
         }
 
         /// <summary>
@@ -78,5 +84,15 @@ namespace CourseBooking.ViewModels
         ///     Gets or sets the name.
         /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the phone.
+        /// </summary>
+        public string Phone { get; set; }
+
+        /// <summary>
+        /// Gets or sets the e mail.
+        /// </summary>
+        public string EMail { get; set; }
     }
 }

@@ -9,7 +9,7 @@
         columns.Bound(p => p.Name);
         columns.Bound(p => p.PreName);
         columns.Bound(p => p.City);
-        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(240);
+        //columns.Command(command => { command.Edit(); command.Destroy(); }).Width(240);
         columns.Command(command => command.Custom("Details").Click("details"));
     })
     .Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("CourseTemplate"))

@@ -11,8 +11,8 @@
         columns.Bound(p => p.City);
         columns.Bound(p => p.CourseType);
         columns.Command(command => command.Custom("Zuweisen").Click("assign"));
-        columns.Command(command => command.Custom("Bestätigen").Click("confirm"));
-        //columns.Command(command => command.Destroy()).Width(160);
+        columns.Command(command => command.Custom("Bestätigen").Click("confirmRegistration"));
+        columns.Command(command => command.Destroy()).Width(160);
     })
         //.Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("CourseTemplate"))
     .Pageable()
@@ -26,31 +26,35 @@
           .Model(model => model.Id(p => p.Id))
           .Read(read => read.Action("GetRegistrations", "CourseRegistration"))
       //.Update(update => update.Action("UpdateRegistration", "Registration"))
-      //.Destroy(update => update.Action("DeleteRegistration", "Registration"))
+            .Destroy(update => update.Action("DeleteRegistration", "CourseRegistration"))
       ).Events(e => e.DataBound("onDataBound"))
           )
 
 
 <script id="template" type="text/kendo-tmpl">
+    #= Name # #= PreName #
+    Tel: #= Phone #
+    E-Mail: #= EMail #
         @(Html.Kendo().Grid<RegisteredCourseViewModel>()
-        .Name("itemGrid_#Id#")
-                .Columns(columns =>
-                {
-                    columns.Bound(p => p.Name);
-                    columns.Bound(p => p.StartDateTime).Format("{0:dd.MM.yyyy HH:mm}");
-                    columns.Bound(p => p.Price);
-                })
-                .Scrollable()
-                .DataSource(dataSource => dataSource
-                    .Ajax()
-                    .PageSize(20)
-                            .Read(read => read.Action("GetCourseRegistrations", "CourseRegistration", new { registration = "#=Id#" }))
-                ).ToClientTemplate())
-    </script>
+              .Name("itemGrid_#Id#")
+              .Columns(columns =>
+              {
+                  columns.Bound(p => p.Name);
+                  columns.Bound(p => p.StartDateTime).Format("{0:dd.MM.yyyy HH:mm}");
+                  columns.Bound(p => p.Price);
+              })
+              .Scrollable()
+              .DataSource(dataSource => dataSource
+                  .Ajax()
+                  .PageSize(20)
+                  .Read(read => read.Action("GetCourseRegistrations", "CourseRegistration", new { registration = "#=Id#" }))
+              ).ToClientTemplate())
+    
+</script>
 
     <script type="text/javascript">
 
-        function confirm(e) {
+        function confirmRegistration(e) {
             e.preventDefault();
 
             var dataItem = this.dataItem($(e.currentTarget).closest("tr"));

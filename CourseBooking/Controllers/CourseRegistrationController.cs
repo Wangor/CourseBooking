@@ -148,6 +148,19 @@ namespace CourseBooking.Controllers
       return new HttpStatusCodeResult(HttpStatusCode.NoContent);
     }
 
+    [Authorize]
+    public ActionResult DeleteRegistration([DataSourceRequest] DataSourceRequest dsRequest, Registration registration)
+    {
+        var reg = this.context.Registrations.Include("Courses").FirstOrDefault(r => r.Id == registration.Id);
+        if (reg != null)
+        {
+            this.context.Registrations.Remove(reg);
+            this.context.SaveChanges();
+        }
+
+        return Json(new[] { registration }.ToDataSourceResult(dsRequest, ModelState));
+    }
+
     /// <summary>
     /// The get registrations.
     /// </summary>
@@ -165,7 +178,7 @@ namespace CourseBooking.Controllers
     {
      try
         {
-            var registrations = this.context.Registrations.Include("Customer").ToList();
+            var registrations = this.context.Registrations.Include("Customer").OrderByDescending(r=>r.RegistrationDateTime).ToList();
             var list = registrations.Select(reg => new RegistrationsViewModel(reg)).ToList();
             return this.Json(list.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
