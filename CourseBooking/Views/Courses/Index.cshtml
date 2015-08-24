@@ -26,6 +26,7 @@
         columns.Bound(p => p.StartDateTime).Format("{0:dd.MM.yyyy HH:mm}").Width(160);
         columns.Bound(p => p.Remark).Width(160);
         columns.Bound(p => p.Price).Width(160);
+        columns.Command(command => command.Custom("Teilnehmerliste").Click("printParticipants"));
         columns.Command(command => { command.Edit(); command.Destroy(); }).Width(240);
     })
     .ToolBar(toolbar => toolbar.Create())
@@ -80,3 +81,12 @@
     }
 </script>*@
 
+<script type="text/javascript">
+    function printParticipants(e) {
+        e.preventDefault();
+
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        var url = '@Url.Action("CourseReport", "Report")?courseId=' + dataItem.Id;
+        window.location.href = url;
+    }
+</script>

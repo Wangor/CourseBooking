@@ -132,7 +132,7 @@ namespace CourseBooking.Controllers
     [Authorize]
     public ActionResult GetCourseRegistrations([DataSourceRequest] DataSourceRequest request, int? registration)
     {
-      Registration entries = this.context.Registrations.Include("Courses").FirstOrDefault(e => e.Id == registration);
+      var entries = this.context.Registrations.Include("Courses").FirstOrDefault(e => e.Id == registration);
 
       if (entries != null)
       {

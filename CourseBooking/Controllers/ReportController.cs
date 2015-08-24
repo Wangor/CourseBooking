@@ -7,30 +7,29 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using CourseBooking.Services;
-
 namespace CourseBooking.Controllers
 {
     using System.IO;
     using System.Web.Mvc;
+    using Services;
 
     /// <summary>
     /// The report controller.
     /// </summary>
     public class ReportController : Controller
     {
-        // GET: Report
         /// <summary>
         /// The course report.
         /// </summary>
         /// <returns>
         /// The <see cref="FileStreamResult"/>.
         /// </returns>
-        public FileStreamResult CourseReport()
+        public FileStreamResult CourseReport(int courseId)
         {
             var stream = new MemoryStream();
 
             var report = ReportHelper.GetReportFromFile(Server.MapPath(@"~\Reports\Course.trdx"));
+            report.ReportParameters["CourseId"].Value = courseId;
             var reportProcessor = new Telerik.Reporting.Processing.ReportProcessor();
             var renderingResult = reportProcessor.RenderReport("PDF", report, null);
             stream.Write(renderingResult.DocumentBytes, 0, renderingResult.DocumentBytes.Length);

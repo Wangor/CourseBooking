@@ -5,7 +5,7 @@
       <Parameters>
         <SqlDataSourceParameter DbType="Int32" Name="@CourseId">
           <Value>
-            <String>1</String>
+            <String>= Parameters.CourseId.Value</String>
           </Value>
         </SqlDataSourceParameter>
       </Parameters>
@@ -14,7 +14,7 @@
       <Parameters>
         <SqlDataSourceParameter DbType="Int32" Name="@CourseId">
           <Value>
-            <String>1</String>
+            <String>= Parameters.CourseId.Value</String>
           </Value>
         </SqlDataSourceParameter>
       </Parameters>
@@ -48,7 +48,7 @@
     </PageHeaderSection>
     <DetailSection Height="5cm" Name="detailSection1">
       <Items>
-        <Table DataSourceName="sqlDataSource" Width="16.9997937276647cm" Height="1.00000001642071cm" Left="0.00010012308478013cm" Top="0.00010012308478013cm" Name="table1" StyleName="Normal.TableNormal">
+        <Table DataSourceName="sqlDataSource" Width="16.9997937276647cm" Height="1.00000001642071cm" Left="0.00010012308478013cm" Top="0cm" Name="table1" StyleName="Normal.TableNormal">
           <Body>
             <Cells>
               <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
@@ -88,16 +88,16 @@
               </TableCell>
             </Cells>
             <Columns>
-              <Column Width="2.42854206965925cm" />
-              <Column Width="2.42854206965925cm" />
-              <Column Width="2.42854206965925cm" />
-              <Column Width="2.42854206965925cm" />
-              <Column Width="2.42854206965925cm" />
-              <Column Width="2.42854206965925cm" />
-              <Column Width="2.42854206965925cm" />
+              <Column Width="2.42854181634258cm" />
+              <Column Width="2.42854181634258cm" />
+              <Column Width="2.42854181634258cm" />
+              <Column Width="2.42854181634258cm" />
+              <Column Width="2.42854181634258cm" />
+              <Column Width="2.42854181634258cm" />
+              <Column Width="2.42854181634258cm" />
             </Columns>
             <Rows>
-              <Row Height="0.499999948605712cm" />
+              <Row Height="0.500000008210355cm" />
             </Rows>
           </Body>
           <Corner />
@@ -225,4 +225,11 @@
       </Margins>
     </PageSettings>
   </PageSettings>
+  <ReportParameters>
+    <ReportParameter Name="CourseId" Type="Integer">
+      <Value>
+        <String>1</String>
+      </Value>
+    </ReportParameter>
+  </ReportParameters>
 </Report>
