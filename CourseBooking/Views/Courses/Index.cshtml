@@ -22,8 +22,8 @@
     .Name("grid")
     .Columns(columns =>
     {
-        columns.Bound(p => p.Name).Width(160);
         columns.Bound(p => p.StartDateTime).Format("{0:dd.MM.yyyy HH:mm}").Width(160);
+        columns.Bound(p => p.Name).Width(160); 
         columns.Bound(p => p.Remark).Width(160);
         columns.Bound(p => p.Price).Width(160);
         columns.Command(command => command.Custom("Teilnehmerliste").Click("printParticipants"));
