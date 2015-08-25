@@ -139,7 +139,7 @@ namespace CourseBooking.Controllers
         {
             if (course != null && ModelState.IsValid)
             {
-                course.StartDateTime = course.StartDateTime.AddHours(-2);
+                //course.StartDateTime = course.StartDateTime.AddHours(-2);
                 this.context.Courses.Add(course);
                 this.context.SaveChanges();
             }
