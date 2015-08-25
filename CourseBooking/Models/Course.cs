@@ -20,6 +20,10 @@ namespace CourseBooking.Models
     [Table("Course")]
     public class Course
     {
+      public Course()
+      {
+          StartDateTime = DateTime.Now;
+      }
         /// <summary>
         /// Gets or sets the id.
         /// </summary>
