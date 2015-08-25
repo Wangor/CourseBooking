@@ -108,10 +108,6 @@ namespace CourseBooking.Controllers
         public ActionResult GetCourses([DataSourceRequest] DataSourceRequest request, int? templateId)
         {
             var courses = this.context.Courses.ToList();
-            foreach (var course in courses)
-            {
-                course.StartDateTime = course.StartDateTime.ToUniversalTime();
-            }
             return this.Json(courses.ToDataSourceResult(request),JsonRequestBehavior.AllowGet);
         }
 
@@ -143,6 +139,7 @@ namespace CourseBooking.Controllers
         {
             if (course != null && ModelState.IsValid)
             {
+                course.StartDateTime = course.StartDateTime.AddHours(-2);
                 this.context.Courses.Add(course);
                 this.context.SaveChanges();
             }
