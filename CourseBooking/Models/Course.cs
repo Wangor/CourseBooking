@@ -7,6 +7,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using NodaTime;
+
 namespace CourseBooking.Models
 {
   using System;
@@ -25,7 +27,9 @@ namespace CourseBooking.Models
       /// </summary>
       public Course()
       {
-          StartDateTime = DateTime.UtcNow;
+          IDateTimeZoneProvider timeZoneProvider = DateTimeZoneProviders.Tzdb;
+          var local = timeZoneProvider["Europe/Zurich"];
+          StartDateTime = local.AtStrictly(LocalDateTime.FromDateTime(DateTime.Now)).ToDateTimeUnspecified();
       }
         /// <summary>
         /// Gets or sets the id.
