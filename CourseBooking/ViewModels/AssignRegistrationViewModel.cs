@@ -37,11 +37,11 @@ namespace CourseBooking.ViewModels
       this.City = registration.City;
       this.Phone = registration.Phone;
       this.EMail = registration.EMail;
-      this.Courses = new List<CourseViewModel>();
+      this.Courses = new List<AssignRegistrationCourseViewModel>();
 
       foreach (var course in registration.Courses)
       {
-        this.Courses.Add(new CourseViewModel { Name = course.Name, StartDateTime = course.StartDateTime, Price = course.Price });
+        this.Courses.Add(new AssignRegistrationCourseViewModel { Name = course.Name, StartDateTime = course.StartDateTime, Price = course.Price });
       }
     }
 
@@ -80,7 +80,7 @@ namespace CourseBooking.ViewModels
     /// <summary>
     ///   Gets or sets the courses.
     /// </summary>
-    public ICollection<CourseViewModel> Courses { get; set; }
+    public ICollection<AssignRegistrationCourseViewModel> Courses { get; set; }
 
     /// <summary>
     ///   Gets or sets the e mail.

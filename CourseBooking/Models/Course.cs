@@ -22,7 +22,7 @@ namespace CourseBooking.Models
     {
       public Course()
       {
-          StartDateTime = DateTime.Now;
+          StartDateTime = DateTime.UtcNow;
       }
         /// <summary>
         /// Gets or sets the id.
