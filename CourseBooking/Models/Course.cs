@@ -20,6 +20,9 @@ namespace CourseBooking.Models
     [Table("Course")]
     public class Course
     {
+      /// <summary>
+      /// Initializes a new instance of the <see cref="Course"/> class.
+      /// </summary>
       public Course()
       {
           StartDateTime = DateTime.UtcNow;

@@ -7,6 +7,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using NodaTime;
+
 namespace CourseBooking.ViewModels
 {
     using System;
@@ -14,8 +16,28 @@ namespace CourseBooking.ViewModels
     using System.ComponentModel.DataAnnotations;
     using Models;
 
+    /// <summary>
+    /// The course view model.
+    /// </summary>
     public class CourseViewModel
     {
+        // Timezone data provider (inject with DI)
+        IDateTimeZoneProvider timeZoneProvider = DateTimeZoneProviders.Tzdb;
+
+        public CourseViewModel(Course course)
+        {
+            var local = timeZoneProvider["Europe/Zurich"];
+
+
+            this.Id = course.Id;
+            this.Name = course.Name;
+            this.Remark = course.Remark;
+            this.CourseTemplateId = course.CourseTemplateId;
+            this.LocationId = course.LocationId;
+            this.StartDateTime = local.AtStrictly(LocalDateTime.FromDateTime(course.StartDateTime)).ToDateTimeUnspecified();
+            this.MaxParticipants = course.MaxParticipants;
+            this.Price = course.Price;
+        }
         /// <summary>
         /// Gets or sets the id.
         /// </summary>
@@ -33,12 +55,6 @@ namespace CourseBooking.ViewModels
         /// </summary>
         [Display(Name = "Bemerkung")]
         public string Remark { get; set; }
-
-        /// <summary>
-        /// Gets or sets the message field.
-        /// </summary>
-        [Display(Name = "Mitteilung")]
-        public int MessageField { get; set; }
 
         /// <summary>
         /// Gets or sets the start date time.
